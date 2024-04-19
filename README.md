@@ -1,0 +1,1 @@
+# loja_LGPJ_com_php_puro
