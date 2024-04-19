@@ -1,0 +1,18 @@
+{
+    "name": "luisgabriel/loja_lgpj_com_php_puro",
+    "autoload": {
+        "psr-4": {
+            "app\\": "app\\"
+        }
+    },
+    "authors": [
+        {
+            "name": "Luís Silvério Calei Gabriel",
+            "email": "luiscaleigabriel@gmail.com"
+        }
+    ],
+    "require": {
+        "league/plates": "^3.5",
+        "symfony/var-dumper": "^7.0"
+    }
+}
