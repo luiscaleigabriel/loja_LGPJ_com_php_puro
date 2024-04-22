@@ -35,27 +35,27 @@ class Product
         $this->description = $description;
     }
 
-    public function getId() 
+    public function getId(): int 
     {
         return $this->id;
     }
 
-    public function getName()
+    public function getName(): string 
     {
         return $this->name;
     }
 
-    public function getPrice() 
+    public function getPrice(): float 
     {
         return $this->price;
     }
 
-    public function getQuantity() 
+    public function getQuantity(): int 
     {
         return $this->quantity;
     }
 
-    public function getDescription() 
+    public function getDescription(): string 
     {
        return $this->description; 
     }

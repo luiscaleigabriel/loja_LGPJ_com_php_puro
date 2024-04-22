@@ -11,7 +11,7 @@ class Cart
         $inCart = false;
         $this->setTotal($product);
         if (count($this->getCart()) > 0) {
-            foreach($this->getCart() as $productInCart) {
+            foreach ($this->getCart() as $productInCart) {
                 if ($productInCart->getId() === $product->getId()) {
                     $quantity = $productInCart->getQuantity() + $product->getQuantity();
                     $productInCart->setQuantity($quantity);
@@ -28,10 +28,11 @@ class Cart
 
     private function setTotal(Product $product) 
     {
-        if (!isset($this->getCart()['total'])) {
-            $_SESSION['cart']['products']['total'] = 0;
+        if (!isset($_SESSION['cart']['total'] )) {
+            $_SESSION['cart']['total'] = 0;
         }
-        $this->getCart()['total'] += $product->getPrice() * $product->getQuantity();
+
+        $_SESSION['cart']['total'] += $product->getPrice() * $product->getQuantity();
     }
 
     private function setProductsIncart($product) 
@@ -39,21 +40,33 @@ class Cart
         if (!isset($_SESSION['cart']['products'])) {
             $_SESSION['cart']['products'] = [];
         }
-
+        
         $_SESSION['cart']['products'][] = $product;
     }
 
-    public function remove() 
+    public function remove(int $id) 
     {
-
+        if (isset($_SESSION['cart']['products'])) {
+            foreach ($this->getCart() as $index => $product) {
+                if ($product->getId() === $id) {
+                    $_SESSION['cart']['total'] -= $product->getPrice() * $product->getQuantity();
+                    unset($_SESSION['cart']['products'][$index]);
+                }
+            }
+        }
     }
 
     public function getCart() 
     {
-        if (!array_key_exists('cart', $_SESSION)) {
+        if (!isset($_SESSION['cart']['products'])) {
             $_SESSION['cart']['products'] = [];
         }
 
         return $_SESSION['cart']['products'];
+    }
+
+    public function getTotal() 
+    {
+        return $_SESSION['cart']['total'] ?? 0;
     }
 }
