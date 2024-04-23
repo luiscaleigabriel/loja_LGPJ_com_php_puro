@@ -681,9 +681,14 @@ ul {
     height: 5rem;
 }
 
+.products > .products--product__image img {
+    min-height: 500px;
+}
+
 a.products--product__name {
     display: block;
-    font-size: 1rem;
+    margin-top: 1rem;
+    font-size: 1.1rem;
     text-align: center;
     transition: var(--transition1);
 }

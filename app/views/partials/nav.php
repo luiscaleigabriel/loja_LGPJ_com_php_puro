@@ -12,7 +12,7 @@
                     <i class="fa fa-search"></i>
                 </label>
             </form>
-            <a href="acount.html">Minha conta <i class="fa fa-user-circle"></i></a>
+            <a href="/acount">Minha conta <i class="fa fa-user-circle"></i></a>
         </div>
     </div>
 </div> <!-- header-top -->

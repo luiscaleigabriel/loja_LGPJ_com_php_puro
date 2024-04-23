@@ -188,94 +188,19 @@
         <h1 class="products__title">
             Popular
         </h1>
-        <div class="products--product">
-            <div class="products--product__image">
-                <img src="assets/images/cat-2.jpg" alt="product" />
+        <?php foreach($products as $product): ?>
+            <div class="products--product">
+                <div class="products--product__image">
+                    <img src="<?= $product->image ?>" alt="product" />
+                </div>
+                <a class="products--product__name" href="#"><?= $product->name ?></a>
+                <p class="products--product__price">
+                    <span class="products--product__priceActual">Kz <?= number_format($product->price, 2, ',', '.') ?></span> 
+                    <span class="products--product__pricePrev">Kz <?= number_format(($product->price - 1000), 2, ',', '.') ?></span>
+                </p>
+                <a class="products--product__add" href="#">Add no carrinho</a>
             </div>
-            <a class="products--product__name" href="#">Nome do produto</a>
-            <p class="products--product__price">
-                <span class="products--product__priceActual">Kz 5000</span> 
-                <span class="products--product__pricePrev">Kz 7000</span>
-            </p>
-            <a class="products--product__add" href="#">Add no carrinho</a>
-        </div>
-        <div class="products--product">
-            <div class="products--product__image">
-                <img src="assets/images/cat-2.jpg" alt="product" />
-            </div>
-            <a class="products--product__name" href="#">Nome do produto</a>
-            <p class="products--product__price">
-                <span class="products--product__priceActual">Kz 5000</span> 
-                <span class="products--product__pricePrev">Kz 7000</span>
-            </p>
-            <a class="products--product__add" href="#">Add no carrinho</a>
-        </div>
-        <div class="products--product">
-            <div class="products--product__image">
-                <img src="assets/images/cat-2.jpg" alt="product" />
-            </div>
-            <a class="products--product__name" href="#">Nome do produto</a>
-            <p class="products--product__price">
-                <span class="products--product__priceActual">Kz 5000</span> 
-                <span class="products--product__pricePrev">Kz 7000</span>
-            </p>
-            <a class="products--product__add" href="#">Add no carrinho</a>
-        </div>
-        <div class="products--product">
-            <div class="products--product__image">
-                <img src="assets/images/cat-2.jpg" alt="product" />
-            </div>
-            <a class="products--product__name" href="#">Nome do produto</a>
-            <p class="products--product__price">
-                <span class="products--product__priceActual">Kz 5000</span> 
-                <span class="products--product__pricePrev">Kz 7000</span>
-            </p>
-            <a class="products--product__add" href="#">Add no carrinho</a>
-        </div>
-        <div class="products--product">
-            <div class="products--product__image">
-                <img src="assets/images/cat-2.jpg" alt="product" />
-            </div>
-            <a class="products--product__name" href="#">Nome do produto</a>
-            <p class="products--product__price">
-                <span class="products--product__priceActual">Kz 5000</span> 
-                <span class="products--product__pricePrev">Kz 7000</span>
-            </p>
-            <a class="products--product__add" href="#">Add no carrinho</a>
-        </div>
-        <div class="products--product">
-            <div class="products--product__image">
-                <img src="assets/images/cat-2.jpg" alt="product" />
-            </div>
-            <a class="products--product__name" href="#">Nome do produto</a>
-            <p class="products--product__price">
-                <span class="products--product__priceActual">Kz 5000</span> 
-                <span class="products--product__pricePrev">Kz 7000</span>
-            </p>
-            <a class="products--product__add" href="#">Add no carrinho</a>
-        </div>
-        <div class="products--product">
-            <div class="products--product__image">
-                <img src="assets/images/cat-2.jpg" alt="product" />
-            </div>
-            <a class="products--product__name" href="#">Nome do produto</a>
-            <p class="products--product__price">
-                <span class="products--product__priceActual">Kz 5000</span> 
-                <span class="products--product__pricePrev">Kz 7000</span>
-            </p>
-            <a class="products--product__add" href="#">Add no carrinho</a>
-        </div>
-        <div class="products--product">
-            <div class="products--product__image">
-                <img src="assets/images/cat-2.jpg" alt="product" />
-            </div>
-            <a class="products--product__name" href="#">Nome do produto</a>
-            <p class="products--product__price">
-                <span class="products--product__priceActual">Kz 5000</span> 
-                <span class="products--product__pricePrev">Kz 7000</span>
-            </p>
-            <a class="products--product__add" href="#">Add no carrinho</a>
-        </div>
+        <?php endforeach; ?>
     </div>
 </section>
 <!-- end products --> 

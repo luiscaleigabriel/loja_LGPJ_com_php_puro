@@ -9,12 +9,20 @@ session_start();
 try {
     $route = new Router;
     $route->add('/', 'GET', 'HomeController:index');
+    $route->add('/about', 'GET', 'HomeController:show');
+
     $route->add('/cart', 'GET', 'CartController:index');
     $route->add('/cart/add', 'GET', 'CartController:store');
+
     $route->add('/contact', 'GET', 'ContactController:index');
-    $route->add('/about', 'GET', 'AboutController:index');
+    
     $route->add('/orders', 'GET', 'OrdersController:index');
+
+    $route->add('/acount', 'GET', 'UserController:index');
+    $route->add('/resetpassword', 'GET', 'UserController:passwordreset');
+
     $route->add('/login', 'GET', 'LoginController:index');
+    $route->add('/logout', 'GET', 'LoginController:logout');
     $route->add('/register', 'GET', 'RegisterController:index');
     $route->init();
 } catch (Exception $e) {

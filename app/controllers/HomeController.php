@@ -3,11 +3,19 @@
 namespace app\controllers;
 
 use app\core\View;
+use app\database\models\Product;
 
 class HomeController 
 {
     public function index() 
     {
-        View::render('home');
+        $products = Product::all('id, name, price, image');
+
+        View::render('home', ['products' => $products]);
+    }
+
+    public function show() 
+    {
+        View::render('about');
     }
 }

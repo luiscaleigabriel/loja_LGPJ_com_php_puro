@@ -35,7 +35,8 @@
 }
 
 .form-group input,
-.form-group textarea {
+.form-group textarea,
+.form-group select {
     width: 100%;
     color: var(--bs-dark);
     font-size: 1.2rem;
@@ -50,13 +51,17 @@
     color: var(--bs-gray);
 }
 
-
 .form-group input {
     height: 3rem;
 }
 
+.form-group select {
+    color: var(--bs-blue);
+}
+
 .form-group input:focus,
-.form-group textarea:focus {
+.form-group textarea:focus,
+.form-group select:focus {
     border: none;
     transform: scale(1.008);
     outline: .2rem solid var(--bs-info);
