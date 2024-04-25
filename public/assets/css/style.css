@@ -783,6 +783,7 @@ a.products--product__name:hover {
 .settings--right {
     width: 100%;
     margin-left: 1rem;
+    background-color: var(--bs-white);
 }
 
 .settings--rightcontentLogin {

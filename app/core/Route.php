@@ -4,7 +4,7 @@ namespace app\core;
 
 readonly class Route 
 {
-    private string $uri;
+    public string $uri;
     private string $method;
     public string $controller;
 

@@ -5,7 +5,7 @@
     <a href="/orders" class="settings--painel__option">
         Minhas compras
     </a>
-    <a href="/cartlist" class="settings--painel__option">
+    <a href="/cart" class="settings--painel__option">
         Carrinho
     </a>
     <a href="/resetpassword" class="settings--painel__option">

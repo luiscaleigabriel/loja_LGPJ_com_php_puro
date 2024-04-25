@@ -188,19 +188,23 @@
         <h1 class="products__title">
             Popular
         </h1>
-        <?php foreach($products as $product): ?>
-            <div class="products--product">
-                <div class="products--product__image">
-                    <img src="<?= $product->image ?>" alt="product" />
+        <?php if(!empty($products)): ?>
+            <?php foreach($products as $product): ?>
+                <div class="products--product">
+                    <div class="products--product__image">
+                        <img src="<?= $product->image ?>" alt="product" />
+                    </div>
+                    <a class="products--product__name" href="#"><?= $product->name ?></a>
+                    <p class="products--product__price">
+                        <span class="products--product__priceActual">Kz <?= number_format($product->price, 2, ',', '.') ?></span> 
+                        <span class="products--product__pricePrev">Kz <?= number_format(($product->price - 1000), 2, ',', '.') ?></span>
+                    </p>
+                    <a class="products--product__add" href="/cart/add/?id=<?= $product->id ?>">Add no carrinho - <?= $instances['cart']->getQuantity($product) ?> </a>
                 </div>
-                <a class="products--product__name" href="#"><?= $product->name ?></a>
-                <p class="products--product__price">
-                    <span class="products--product__priceActual">Kz <?= number_format($product->price, 2, ',', '.') ?></span> 
-                    <span class="products--product__pricePrev">Kz <?= number_format(($product->price - 1000), 2, ',', '.') ?></span>
-                </p>
-                <a class="products--product__add" href="#">Add no carrinho</a>
-            </div>
-        <?php endforeach; ?>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <h2>Nenhum produto encontrado</h2>
+        <?php endif; ?>
     </div>
 </section>
 <!-- end products --> 

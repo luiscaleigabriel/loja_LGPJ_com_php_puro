@@ -9,6 +9,7 @@ class Product
     private float $price;
     private int $quantity;
     private string $description;
+    private string $slug;
 
     public function setId(int $id) 
     {
@@ -35,6 +36,11 @@ class Product
         $this->description = $description;
     }
 
+    public function setSlug(string $slug) 
+    {
+        $this->slug = $slug;
+    }
+
     public function getId(): int 
     {
         return $this->id;
@@ -58,6 +64,11 @@ class Product
     public function getDescription(): string 
     {
        return $this->description; 
+    }
+
+    public function getSlug(): string 
+    {
+       return $this->slug; 
     }
 
 }

@@ -25,7 +25,7 @@ class View
             throw new Exception("View {$view} não existe ");
         }
 
-        self::addInstance('cart', new Cart);
+        self::addInstance('cart', new CartInfo);
         // self::addInstance('cart', new Auth);
 
         $templates = new Engine($filePath);

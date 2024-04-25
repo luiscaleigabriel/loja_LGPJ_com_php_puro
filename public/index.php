@@ -12,17 +12,19 @@ try {
     $route->add('/about', 'GET', 'HomeController:show');
 
     $route->add('/cart', 'GET', 'CartController:index');
-    $route->add('/cart/add', 'GET', 'CartController:store');
+    $route->add('/cart/add', 'GET', 'CartController:add');
 
     $route->add('/contact', 'GET', 'ContactController:index');
     
-    $route->add('/orders', 'GET', 'OrdersController:index');
+    $route->add('/orders', 'GET', 'OrderController:index');
 
     $route->add('/acount', 'GET', 'UserController:index');
     $route->add('/resetpassword', 'GET', 'UserController:passwordreset');
 
     $route->add('/login', 'GET', 'LoginController:index');
+    $route->add('/login', 'POST', 'LoginController:store');
     $route->add('/logout', 'GET', 'LoginController:logout');
+    
     $route->add('/register', 'GET', 'RegisterController:index');
     $route->init();
 } catch (Exception $e) {

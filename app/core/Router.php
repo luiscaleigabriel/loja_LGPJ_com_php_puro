@@ -2,6 +2,8 @@
 
 namespace app\core;
 
+use app\support\Redirect;
+
 class Router 
 {
     private array $routes = [];
@@ -14,7 +16,10 @@ class Router
     public function init() 
     {
         foreach ($this->routes as $route) {
-            if ($route->mach()) return (new Controller)->call($route);
+            if ($route->mach()) {
+                Redirect::register($route);
+                return (new Controller)->call($route);
+            };
         }
 
         return (new Controller)->call(new Route('/404', 'GET', 'NotFoundController:index'));
