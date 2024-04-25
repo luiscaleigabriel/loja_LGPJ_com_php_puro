@@ -44,11 +44,11 @@ class Cart
         $_SESSION['cart']['products'][$product->getSlug()] = $product;
     }
 
-    public function remove(int $id) 
+    public function remove(string $slug) 
     {
         if (isset($_SESSION['cart']['products'])) {
             foreach (CartInfo::getCart() as $index => $product) {
-                if ($product->getId() === $id) {
+                if ($product->getSlug() === $slug) {
                     $_SESSION['cart']['total'] -= $product->getPrice() * $product->getQuantity();
                     unset($_SESSION['cart']['products'][$index]);
                 }

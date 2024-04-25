@@ -32,30 +32,38 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>
-                                <div class="td--product">
-                                    <div class="td--product__image">
-                                        <img src="images/product-1.jpg" alt="product" />
-                                    </div>
-                                    <div class="td--product__name">
-                                        Nome do produto
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                Kz 5000
-                            </td>
-                            <td>
-                                1
-                            </td>
-                            <td>
-                                Kz 5000
-                            </td>
-                            <td>
-                                <a class="btn btn-danger" href="#">Remover</a>
-                            </td>
-                        </tr>
+                        <?php if(count($instances['cart']->getCart()) > 0): ?>
+                            <?php foreach($instances['cart']->getCart() as $product): ?>
+                                <tr>
+                                    <td>
+                                        <div class="td--product">
+                                            <div class="td--product__image">
+                                                <img src="<?= $product->getImage() ?>" alt="product" />
+                                            </div>
+                                            <div class="td--product__name">
+                                                <?= $product->getName() ?>
+                                            </div>
+                                        </div>  
+                                    </td>
+                                    <td>
+                                        Kz <?= number_format($product->getPrice(), 2, ',', '.') ?>
+                                    </td>
+                                    <td>
+                                        <input type="number" class="numberInput" min="1" date_add="<?= $product->getSlug() ?>" value="<?= $product->getQuantity() ?>" name="number" id="number" />
+                                    </td>
+                                    <td>
+                                        Kz <?= number_format($instances['cart']->getProducSubTotal($product), 2, ',', '.') ?>
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-danger" href="/cart/remove/?product=<?= $product->getSlug() ?>">Remover</a>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <tr>
+                                <h3>Nenhum produto no carrinho adicione produtos para fazer a compra</h3>
+                            </tr>
+                        <?php endif; ?>
                     </tbody>
                 </table>
             </div>
@@ -64,14 +72,14 @@
             <h3 class="cartsummery__title">Resumo do carrinho</h3>
             <div class="cartsummery--values">
                 <p>
-                    SubTotal <span>Kz 1000</span>
+                    SubTotal <span>Kz <?= number_format($instances['cart']->getTotal(), 2, ',', '.') ?></span>
                 </p>
                 <p>
-                    Entrega <span>Kz 1000</span>
+                    Entrega <span>Kz <?= number_format(1000, 2, ',', '.') ?></span>
                 </p>
                 <div class="cartsummery--total">
                     <p>
-                        Entrega <span>Kz 2000</span>
+                        Total a pagar <span>Kz <?= number_format(($instances['cart']->getTotal() + 1000), 2, ',', '.') ?></span>
                     </p>
 
                     <a id="btn" href="#">Comprar</a>

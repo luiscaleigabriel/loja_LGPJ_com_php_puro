@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\core\Cart;
+use app\core\CartInfo;
 use app\core\View;
 use app\database\dao\Product;
 use app\database\models\Product as ModelsProduct;
@@ -40,6 +41,40 @@ class CartController
 
             Redirect::back();
 
+        }
+    }
+
+    public function updateQuantity() 
+    {
+        if (array_key_exists('product', $_GET)) {
+            $slug = strip_tags($_GET['product']);
+            $value = strip_tags($_GET['value']);
+
+            if (isset($_SESSION['cart']['products'][$slug])) {
+
+                foreach(CartInfo::getCart() as $index => $product) {
+                    if ($_SESSION['cart']['products'][$index]) {
+
+                        $cart = new Cart;
+                        CartInfo::getCart()[$index]->setQuantity($value);
+                        // $cart->setTotal($product);
+                    }
+                }
+            }
+
+            Redirect::back();
+        }
+    }
+
+    public function delete() 
+    {
+        if (array_key_exists('product', $_GET)) {
+            $slug = strip_tags($_GET['product']);
+
+            $cart = new Cart;
+            $cart->remove($slug);
+
+            Redirect::back();
         }
     }
 }

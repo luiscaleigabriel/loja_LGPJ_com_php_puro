@@ -2,6 +2,7 @@
 
 namespace app\core;
 
+use app\database\dao\Product as DaoProduct;
 use app\database\models\Product;
 
 class CartInfo 
@@ -27,5 +28,10 @@ class CartInfo
         }
 
         return 0;
+    }
+
+    public static function getProducSubTotal(DaoProduct $product) 
+    {
+        return $product->getQuantity() * $product->getPrice();
     }
 }

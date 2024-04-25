@@ -12,8 +12,10 @@ try {
     $route->add('/about', 'GET', 'HomeController:show');
 
     $route->add('/cart', 'GET', 'CartController:show');
-    $route->add('/cart/orders', 'GET', 'CartController:index');
+    $route->add('/cartorders', 'GET', 'CartController:index');
     $route->add('/cart/add', 'GET', 'CartController:add');
+    $route->add('/cart/remove', 'GET', 'CartController:delete');
+    $route->add('/cart/quantity', 'GET', 'CartController:updateQuantity');
 
     $route->add('/contact', 'GET', 'ContactController:index');
     

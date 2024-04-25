@@ -16,7 +16,7 @@
 <section class="settings">
     <div class="settings--content wrapper">
         <div class="settings--painel">
-            <a href="/cart/orders" class="settings--painel__option">
+            <a href="/cartorders" class="settings--painel__option">
                 Fazer a compra
             </a>
         </div>
@@ -32,7 +32,7 @@
                             <div class="cartlis--product__info">
                                 <span class="cartlis--product__name"><?= $product->getName() ?></span>
                                 <span class="cartlis--product__price">Kz <?= number_format($product->getPrice(), 2, ',', '.') ?></span>
-                                <span class="cartlis--product__price">Quantidade <input value="<?= $product->getQuantity() ?>" type="number" name="quantity" id="quantity" /></span>
+                                <span class="cartlis--product__price">Quantidade <input value="<?= $product->getQuantity() ?>" min="1" class="numberInput" date_add="<?= $product->getSlug() ?>" type="number" name="quantity" id="number" /></span>
                             </div>
                             <div class="cartlis--product__action">
                                 <a href="/cart/delete/?id=<?= $product->getId() ?>" class="btn btn-danger">Deletar</a>

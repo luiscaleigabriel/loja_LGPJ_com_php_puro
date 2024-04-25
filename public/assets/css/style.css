@@ -86,11 +86,16 @@ ul {
     display: none;
 }
 
-#quantity {
+#number {
     width: 100px;
     font-size: 1rem;
     outline: none;
+    text-align: center;
     border: 1px solid var(--bs-blue);
+}
+
+#number:focus {
+    box-shadow: 0 0 1rem var(--bs-info);
 }
 
 /* Botões */
