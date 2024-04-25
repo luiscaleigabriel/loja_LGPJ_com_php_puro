@@ -10,6 +10,7 @@ class Product
     private int $quantity;
     private string $description;
     private string $slug;
+    private string $image;
 
     public function setId(int $id) 
     {
@@ -41,6 +42,11 @@ class Product
         $this->slug = $slug;
     }
 
+    public function setImage(string $image) 
+    {
+        $this->image = $image;
+    }
+
     public function getId(): int 
     {
         return $this->id;
@@ -69,6 +75,11 @@ class Product
     public function getSlug(): string 
     {
        return $this->slug; 
+    }
+
+    public function getImage(): string 
+    {
+        return $this->image;
     }
 
 }

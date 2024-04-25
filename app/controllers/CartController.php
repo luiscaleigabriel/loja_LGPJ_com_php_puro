@@ -15,18 +15,24 @@ class CartController
         View::render('cart');
     }
 
+    public function show() 
+    {
+        View::render('cartlist');
+    }
+
     public function add() 
     {
         if (array_key_exists('id', $_GET) && is_numeric($_GET['id'])) {
             $id = strip_tags($_GET['id']);
 
-            $productInfo = ModelsProduct::where('id' , $id, 'id, name, price, slug');
+            $productInfo = ModelsProduct::where('id' , $id, 'id, name, price, slug, image');
 
             $product = new Product;
             $product->setId($productInfo->id);
             $product->setName($productInfo->name);
             $product->setPrice($productInfo->price);
             $product->setSlug($productInfo->slug);
+            $product->setImage($productInfo->image);
             $product->setQuantity(1);
 
             $cart = new Cart;

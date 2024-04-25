@@ -86,6 +86,13 @@ ul {
     display: none;
 }
 
+#quantity {
+    width: 100px;
+    font-size: 1rem;
+    outline: none;
+    border: 1px solid var(--bs-blue);
+}
+
 /* Botões */
 .btn {
     border: none;
@@ -830,7 +837,7 @@ a.products--product__name:hover {
     width: 100%;
     overflow: hidden;
     border-radius: .5rem;
-    background-color: var(--bs-light);
+    background-color: var(--bs-white);
     box-shadow: 0 0 40px #50505065;
 }
 
