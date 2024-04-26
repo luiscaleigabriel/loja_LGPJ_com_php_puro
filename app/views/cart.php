@@ -49,7 +49,7 @@
                                         Kz <?= number_format($product->getPrice(), 2, ',', '.') ?>
                                     </td>
                                     <td>
-                                        <input type="number" class="numberInput" min="1" date_add="<?= $product->getSlug() ?>" value="<?= $product->getQuantity() ?>" name="number" id="number" />
+                                        <input type="number" class="numberInput" min="1" data-before="<?= $product->getQuantity() ?>" data-slug="<?= $product->getSlug() ?>" value="<?= $product->getQuantity() ?>" name="number" id="number" />
                                     </td>
                                     <td>
                                         Kz <?= number_format($instances['cart']->getProducSubTotal($product), 2, ',', '.') ?>
@@ -61,7 +61,9 @@
                             <?php endforeach; ?>
                         <?php else: ?>
                             <tr>
-                                <h3>Nenhum produto no carrinho adicione produtos para fazer a compra</h3>
+                                <td>
+                                    <h3>Nenhum produto no carrinho </h3>
+                                </td>
                             </tr>
                         <?php endif; ?>
                     </tbody>

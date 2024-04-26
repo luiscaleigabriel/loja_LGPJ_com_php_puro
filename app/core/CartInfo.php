@@ -18,6 +18,10 @@ class CartInfo
 
     public static function getTotal() 
     {
+        if ($_SESSION['cart']['total'] < 0) {
+
+        }
+
         return $_SESSION['cart']['total'] ?? 0;
     }
 

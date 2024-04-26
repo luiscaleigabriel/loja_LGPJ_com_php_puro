@@ -44,23 +44,15 @@ class CartController
         }
     }
 
-    public function updateQuantity() 
+    public function update() 
     {
         if (array_key_exists('product', $_GET)) {
             $slug = strip_tags($_GET['product']);
-            $value = strip_tags($_GET['value']);
+            $quantity = strip_tags($_GET['value']);
+            $quantityBefore = strip_tags($_GET['before']);
 
-            if (isset($_SESSION['cart']['products'][$slug])) {
-
-                foreach(CartInfo::getCart() as $index => $product) {
-                    if ($_SESSION['cart']['products'][$index]) {
-
-                        $cart = new Cart;
-                        CartInfo::getCart()[$index]->setQuantity($value);
-                        // $cart->setTotal($product);
-                    }
-                }
-            }
+            $cart = new Cart;
+            $cart->update($slug, $quantity);
 
             Redirect::back();
         }

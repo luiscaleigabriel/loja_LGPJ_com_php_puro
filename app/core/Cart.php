@@ -56,4 +56,25 @@ class Cart
         }
     }
 
+    public function update(string $slug, int $quantity) 
+    {
+        if (array_key_exists($slug, $_SESSION['cart']['products'])) {
+
+            $product = $_SESSION['cart']['products'][$slug];
+
+            if ($quantity > 0) {
+                foreach (CartInfo::getCart() as $index => $product) {
+                    if ($product->getSlug() === $slug) {
+                        $_SESSION['cart']['total'] -= $product->getPrice() * $product->getQuantity();
+                        unset($_SESSION['cart']['products'][$index]);
+                    }
+                }
+                $product->setQuantity($quantity);
+            } else {
+                $product->setQuantity(1);
+            }
+
+        }
+    }
+
 }
