@@ -63,13 +63,8 @@ class Cart
             $product = $_SESSION['cart']['products'][$slug];
 
             if ($quantity > 0) {
-                foreach (CartInfo::getCart() as $index => $product) {
-                    if ($product->getSlug() === $slug) {
-                        $_SESSION['cart']['total'] -= $product->getPrice() * $product->getQuantity();
-                        unset($_SESSION['cart']['products'][$index]);
-                    }
-                }
-                $product->setQuantity($quantity);
+                $product->setQuantity($product->getQuantity() + 1);
+                $this->setTotal($product);
             } else {
                 $product->setQuantity(1);
             }

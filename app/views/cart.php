@@ -49,7 +49,7 @@
                                         Kz <?= number_format($product->getPrice(), 2, ',', '.') ?>
                                     </td>
                                     <td>
-                                        <input type="number" class="numberInput" min="1" data-before="<?= $product->getQuantity() ?>" data-slug="<?= $product->getSlug() ?>" value="<?= $product->getQuantity() ?>" name="number" id="number" />
+                                        <input type="number" class="numberInput" min="1"  data-slug="<?= $product->getSlug() ?>" value="<?= $product->getQuantity() ?>" name="number" id="number" />
                                     </td>
                                     <td>
                                         Kz <?= number_format($instances['cart']->getProducSubTotal($product), 2, ',', '.') ?>

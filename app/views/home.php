@@ -9,45 +9,45 @@
 <section class="carrocel--main">
     <section class="carrocel">
         <div class="carrocel--slider">
-            <div class="carrocel--slider__slide" style="background-image: url(assets/images/frankie-VghbBAYqUJ0-unsplash.jpg);">
+            <div class="carrocel--slider__slide" style="background-image: url(assets/images/monitor-27-aoc-fhd-hdmi-vga-75hz-.jpg);">
                 <div class="carrocel--slider--content">
-                    <div class="product__name">Mouse G</div>
-                    <div class="product__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis, illo. Nihil qui eligendi molestias laborum iste in sunt eius similique.</div>
+                    <div class="product__name">AOC</div>
+                    <div class="product__description">MONITOR 27 "FULL HD HDMI/VGA 75HZ.</div>
                     <a href="#" class="carrocel--slider--content__btn">Ver mais</a>
                 </div>
             </div>
-            <div class="carrocel--slider__slide" style="background-image: url(assets/images/image2.jpg);">
+            <div class="carrocel--slider__slide" style="background-image: url(assets/images/playstation-5-ps5-4k-825gb-blu-ray-ccomando.jpg);">
                 <div class="carrocel--slider--content">
-                    <div class="product__name">Monitor</div>
-                    <div class="product__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis, illo. Nihil qui eligendi molestias laborum iste in sunt eius similique.</div>
+                    <div class="product__name">SONY</div>
+                    <div class="product__description">PLAYSTATION - PS5 4K 825GB BLU-RAY COM COMANDO.</div>
                     <a href="#" class="carrocel--slider--content__btn">Ver mais</a>
                 </div>
             </div>
-            <div class="carrocel--slider__slide" style="background-image: url(assets/images/image3.jpg);">
+            <div class="carrocel--slider__slide" style="background-image: url(assets/images/pc-hp-aio-207-fhd-j4025-4g-256-ssd-w11h-branco.jpg);">
                 <div class="carrocel--slider--content">
-                    <div class="product__name">NotBook HP</div>
-                    <div class="product__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis, illo. Nihil qui eligendi molestias laborum iste in sunt eius similique.</div>
+                    <div class="product__name">HP</div>
+                    <div class="product__description">COMPUTADOR ALL-IN-ONE 20.7" FHD J4025 4G 256 SSD WINDOWS 11 HOME.</div>
                     <a href="#" class="carrocel--slider--content__btn">Ver mais</a>
                 </div>
             </div>
-            <div class="carrocel--slider__slide" style="background-image: url(assets/images/image4.jpg);">
+            <div class="carrocel--slider__slide" style="background-image: url(assets/images/port-asus-x515-156-i5-1135g7-8g-256ssd-w11h-cinza.jpg);">
                 <div class="carrocel--slider--content">
-                    <div class="product__name">Teclado LG</div>
-                    <div class="product__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis, illo. Nihil qui eligendi molestias laborum iste in sunt eius similique.</div>
+                    <div class="product__name">ASUS</div>
+                    <div class="product__description">COMPUTADOR PORTÁTIL X515 15.6" 15-1135G7 8GB 256GB SSD W11H.</div>
                     <a href="#" class="carrocel--slider--content__btn">Ver mais</a>
                 </div>
             </div>
-            <div class="carrocel--slider__slide" style="background-image: url(assets/images/product-1.jpg);">
+            <div class="carrocel--slider__slide" style="background-image: url(assets/images/port-lenovo-ideapad-156-celeron-n4020-4g-500gb-w11s.jpg);">
                 <div class="carrocel--slider--content">
-                    <div class="product__name">Apple Pad</div>
-                    <div class="product__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis, illo. Nihil qui eligendi molestias laborum iste in sunt eius similique.</div>
+                    <div class="product__name">HP</div>
+                    <div class="product__description">COMPUTADOR PORTÁTIL X515 15.6" 15-1235UFHD SLIM 16GB SSD WINDOWS.</div>
                     <a href="#" class="carrocel--slider--content__btn">Ver mais</a>
                 </div>
             </div>
-            <div class="carrocel--slider__slide" style="background-image: url(assets/images/image6.jpg);">
+            <div class="carrocel--slider__slide" style="background-image: url(assets/images/smartphone-blackview-bv9300-12gb256gb-laser-preto.jpg);">
                 <div class="carrocel--slider--content">
-                    <div class="product__name">Monitor LG</div>
-                    <div class="product__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis, illo. Nihil qui eligendi molestias laborum iste in sunt eius similique.</div>
+                    <div class="product__name">BLACKVIEW</div>
+                    <div class="product__description">SMARTPHONE BV9300 12GB+256GB LASER PRETO.</div>
                     <a href="#" class="carrocel--slider--content__btn">Ver mais</a>
                 </div>
             </div>

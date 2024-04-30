@@ -171,8 +171,7 @@ quantityProduct.forEach(btn => {
     btn.addEventListener('input', () => {
         
         if (btn.value !== '' && btn.value !== null) {
-            window.location.href = '/cart/update/?product=' + btn.getAttribute('data-slug') + '&value=' + btn.value +
-            '&before=' + btn.getAttribute('data-before');
+            window.location.href = '/cart/update/?product=' + btn.getAttribute('data-slug') + '&value=' + btn.value;
         }
 
     });
