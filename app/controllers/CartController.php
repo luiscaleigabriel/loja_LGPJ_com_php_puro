@@ -46,9 +46,9 @@ class CartController
 
     public function update() 
     {
-        if (array_key_exists('product', $_GET)) {
-            $slug = strip_tags($_GET['product']);
-            $quantity = strip_tags($_GET['value']);
+        if (array_key_exists('slug', $_POST)) {
+            $slug = strip_tags($_POST['slug']);
+            $quantity = strip_tags($_POST['quantity']);
 
             $cart = new Cart;
             $cart->update($slug, $quantity);

@@ -49,7 +49,11 @@
                                         Kz <?= number_format($product->getPrice(), 2, ',', '.') ?>
                                     </td>
                                     <td>
-                                        <input type="number" class="numberInput" min="1"  data-slug="<?= $product->getSlug() ?>" value="<?= $product->getQuantity() ?>" name="number" id="number" />
+                                        <form action="/cart/update" method="POST">
+                                            <input type="hidden" name="slug" value="<?= $product->getSlug() ?>" />
+                                            <input type="number" class="numberInput" min="1"  value="<?= $product->getQuantity() ?>" name="quantity" id="number" />
+                                            <button class="btn btn-alert" type="submit">Alterar</button>
+                                        </form>
                                     </td>
                                     <td>
                                         Kz <?= number_format($instances['cart']->getProducSubTotal($product), 2, ',', '.') ?>

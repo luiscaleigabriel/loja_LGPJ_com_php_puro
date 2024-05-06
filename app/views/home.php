@@ -194,12 +194,13 @@
                     <div class="products--product__image">
                         <img src="<?= $product->image ?>" alt="product" />
                     </div>
-                    <a class="products--product__name" href="#"><?= $product->name ?></a>
+                    <a class="products--product__name" href="/details?id=<?= $product->id ?>"><?= $product->name ?></a>
                     <p class="products--product__price">
                         <span class="products--product__priceActual">Kz <?= number_format($product->price, 2, ',', '.') ?></span> 
-                        <span class="products--product__pricePrev">Kz <?= number_format(($product->price - 1000), 2, ',', '.') ?></span>
+                        <span class="products--product__pricePrev">
                     </p>
                     <a class="products--product__add" href="/cart/add/?id=<?= $product->id ?>">Add no carrinho - <?= $instances['cart']->getQuantity($product) ?> </a>
+                    <a class="products--product__details" href="/details?id=<?= $product->id ?>">Detalhes</i></a>
                 </div>
             <?php endforeach; ?>
         <?php else: ?>

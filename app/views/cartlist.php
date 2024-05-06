@@ -32,7 +32,7 @@
                             <div class="cartlis--product__info">
                                 <span class="cartlis--product__name"><?= $product->getName() ?></span>
                                 <span class="cartlis--product__price">Kz <?= number_format($product->getPrice(), 2, ',', '.') ?></span>
-                                <span class="cartlis--product__price">Quantidade <input value="<?= $product->getQuantity() ?>" min="1" class="numberInput" date_add="<?= $product->getSlug() ?>" type="number" name="quantity" id="number" /></span>
+                                <span class="cartlis--product__price">Quantidade <?= $product->getQuantity() ?></span>
                             </div>
                             <div class="cartlis--product__action">
                                 <a href="/cart/delete/?id=<?= $product->getId() ?>" class="btn btn-danger">Deletar</a>

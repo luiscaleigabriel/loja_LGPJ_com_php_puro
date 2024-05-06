@@ -161,18 +161,4 @@ droplistBtn.forEach(btn => {
     });
 });
 
-/*
-* Set quantity
-*/
 
-const quantityProduct = document.querySelectorAll('.numberInput');
-
-quantityProduct.forEach(btn => {
-    btn.addEventListener('input', () => {
-        
-        if (btn.value !== '' && btn.value !== null) {
-            window.location.href = '/cart/update/?product=' + btn.getAttribute('data-slug') + '&value=' + btn.value;
-        }
-
-    });
-});

@@ -56,14 +56,14 @@ class Cart
         }
     }
 
-    public function update(string $slug, int $quantity) 
+    public function update(string $slug, string|int $quantity) 
     {
         if (array_key_exists($slug, $_SESSION['cart']['products'])) {
 
             $product = $_SESSION['cart']['products'][$slug];
 
             if ($quantity > 0) {
-                $product->setQuantity($product->getQuantity() + 1);
+                $product->setQuantity($quantity);
                 $this->setTotal($product);
             } else {
                 $product->setQuantity(1);

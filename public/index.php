@@ -15,7 +15,9 @@ try {
     $route->add('/cartorders', 'GET', 'CartController:index');
     $route->add('/cart/add', 'GET', 'CartController:add');
     $route->add('/cart/remove', 'GET', 'CartController:delete');
-    $route->add('/cart/update', 'GET', 'CartController:update');
+    $route->add('/cart/update', 'POST', 'CartController:update');
+
+    $route->add('/details', 'GET', 'ProductController:details');
 
     $route->add('/contact', 'GET', 'ContactController:index');
     
