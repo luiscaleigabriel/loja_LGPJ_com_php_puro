@@ -36,6 +36,10 @@ class Redirect
 
     public static function register(Route $route) 
     {
-        !($_SESSION['redirect']) ? self::registerRedirect($route) : self::registerFirstRedirect($route);    
+        if(!Session::has('redirect')) {
+            self::registerRedirect($route);
+        }else {
+            self::registerFirstRedirect($route);
+        }   
     }
 }

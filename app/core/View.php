@@ -2,6 +2,8 @@
 
 namespace app\core;
 
+use app\database\models\Product;
+use app\support\Session;
 use Exception;
 use League\Plates\Engine;
 
@@ -9,7 +11,7 @@ class View
 {
     private static array $instances = [];
 
-    private static function addInstance(string $instanceKey, object $instanceClass) 
+    private static function addInstance(string $instanceKey,  $instanceClass) 
     {
         if (!isset(self::$instances[$instanceKey])) {
             self::$instances[$instanceKey] = $instanceClass;
@@ -26,7 +28,7 @@ class View
         }
 
         self::addInstance('cart', new CartInfo);
-        // self::addInstance('cart', new Auth);
+        self::addInstance('session', Session::class);
 
         $templates = new Engine($filePath);
         $templates->addData(['instances' => self::$instances]);

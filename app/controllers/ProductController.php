@@ -13,25 +13,23 @@ class ProductController
         $id = strip_tags($_GET['id']);
 
         if(!empty($id)) {
-            $allProducts = $this->allProducts();
             $product = new Product;
-            $product = $product->where('id', $id);
+            $allProducts = $product->all();
 
+            foreach($allProducts as $product) {
+                if($product->id == $id) {
+                    $product = $product;
+                    break;
+                }
+            }
             
             View::render('product', [
                 'product' => $product,
-                'allProducts' => $this->allProducts()
-        ]);
+                'allProducts' => $allProducts
+            ]);
         }else{
             Redirect::to('/');
         }
     }
 
-    private function allProducts() 
-    {
-        $product = new Product;
-        $allProducts = $product->all();
-
-        return $allProducts;
-    }
 }

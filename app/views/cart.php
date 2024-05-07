@@ -16,6 +16,19 @@
 </section>
 <!-- end source -->
 
+<?php if($instances['session']::has('__flash')): ?>
+    <?php if($instances['session']::flashHas('success')):  ?>
+        <div class="success">
+            <?= $instances['session']::flashGet('success') ?>
+        </div>
+    <?php endif; ?>
+    <?php if($instances['session']::flashHas('error')): ?>
+        <div class="error">
+            <?= $instances['session']::flashGet('error') ?>
+        </div>
+    <?php endif;  ?>
+<?php endif; ?>
+
 <!-- start settings -->
 <section class="settings">
     <div class="settings--content tabl wrapper">
@@ -81,14 +94,14 @@
                     SubTotal <span>Kz <?= number_format($instances['cart']->getTotal(), 2, ',', '.') ?></span>
                 </p>
                 <p>
-                    Entrega <span>Kz <?= number_format(1000, 2, ',', '.') ?></span>
+                    Entrega <span>Kz <?= number_format($entrega = ($instances['cart']->getTotal() > 0) ? 1000 : 0, 2, ',', '.') ?></span>
                 </p>
                 <div class="cartsummery--total">
                     <p>
-                        Total a pagar <span>Kz <?= number_format(($instances['cart']->getTotal() + 1000), 2, ',', '.') ?></span>
+                        Total a pagar <span>Kz <?= number_format(($instances['cart']->getTotal() + $entrega), 2, ',', '.') ?></span>
                     </p>
 
-                    <a id="btn" href="#">Comprar</a>
+                    <a id="btn" href="/checkout">Comprar</a>
                 </div>
             </div>
         </div>
