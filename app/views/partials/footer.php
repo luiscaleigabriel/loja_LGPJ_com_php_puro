@@ -40,12 +40,14 @@
     <div class="footer--card">
         <h2 class="footer--card__title">Minha conta</h2>
         <ul>
-            <li>
-                <a href="/login">Login</a>
-            </li>
-            <li>
-                <a href="/register">Registre-se</a>
-            </li>
+            <?php if(!$instances['session']::has('logged')): ?>
+                <li>
+                    <a href="/login">Login</a>
+                </li>
+                <li>
+                    <a href="/register">Registre-se</a>
+                </li>
+            <?php endif; ?>
             <li>
                 <a href="/orders">Minhas compras</a>
             </li>

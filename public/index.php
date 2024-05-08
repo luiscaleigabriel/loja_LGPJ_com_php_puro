@@ -1,29 +1,12 @@
 <?php
 
 use app\core\Router;
-use app\database\models\User;
+use app\support\Session;
 
 require '../vendor/autoload.php';
 
 session_start();
 
-
-$user = new User;
-$user = $user->create([
-    'name' => 'Manuel Fonseca',
-    'email' => 'luis@gmail.com',
-    'phone' => '929939990',
-    'gender' => 'M',
-    'address' => 'Benfica',
-    'password' => password_hash('1234', PASSWORD_DEFAULT),
-    'image' => null,
-    'is_admin' => false,
-    'created_at' => 'default',
-    'updated_at' => 'default',
-]);
-
-
-dd($user);
 try {
     $route = new Router;
     $route->add('/', 'GET', 'HomeController:index');
@@ -52,7 +35,8 @@ try {
     $route->add('/login', 'POST', 'LoginController:store');
     $route->add('/logout', 'GET', 'LoginController:logout');
     
-    $route->add('/register', 'GET', 'RegisterController:index');
+    $route->add('/register', 'GET', 'RegisterController:store');
+    $route->add('/register/create', 'POST', 'RegisterController:create');
     $route->init();
 } catch (Exception $e) {
     dd($e->getMessage().''. $e->getFile() .' na linha '. $e->getLine());

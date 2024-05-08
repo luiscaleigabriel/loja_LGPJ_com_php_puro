@@ -13,7 +13,11 @@ class LoginController
 {
     public function index() 
     {
-        View::render('login');
+        if(!Session::has('logged')) {
+            View::render('login');
+        }else {
+            Redirect::to('/cartorders');
+        }
     }
 
     public function store() 
@@ -35,5 +39,9 @@ class LoginController
         Redirect::back();
     }
 
+    public function logout() 
+    {
+        Auth::logout();
+    }
     
 }

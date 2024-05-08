@@ -68,23 +68,28 @@ abstract class Model
 
             Transaction::close();
         } catch (PDOException $th) {
+            dd($th->getMessage());
             Transaction::rollback();
         }
     }
 
-    public static function update(array $data) 
+    public static function update(string $field, string|int $fieldValue, array $data) 
     {
         try {
             Transaction::open();
+            $tableName = static::$table;
+
+            $sql = "update {$tableName} set ";
+            foreach($data  as $index => $value) {
+                $sql .= "{$index} = :{$index},";
+            }
+
+            $sql = rtrim($sql, ',');
+            $sql .= " where {$field} = :{$field}";
 
             $conn = Transaction::getConnection();
 
-            $tableName = static::$table;
-
-            $sql = "insert into {$tableName} (";
-            $sql .= implode(',', array_keys($data)) .") values (:";
-            $sql .= implode(',:', array_keys($data)).")";
-
+            $data[$field] = $fieldValue;
 
             $prepere = $conn->prepare($sql);
 

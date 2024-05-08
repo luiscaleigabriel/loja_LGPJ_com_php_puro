@@ -6,13 +6,14 @@
             </a>
         </div>
         <div class="header--search">
+        <?= $instances['session']::has('logged') ? 'Olá! '. mb_strtoupper($instances['session']::get('user')['name']) . ' <i class="fa fa-user"></i> ' : '' ?>
             <form action="">
                 <label for="search">
                     <input type="search" name="search" id="search" placeholder="Busque por produtos" /> 
                     <i class="fa fa-search"></i>
                 </label>
             </form>
-            <a href="/acount">Minha conta <i class="fa fa-user-circle"></i></a>
+            <?= $instances['session']::has('logged') ? '<a href="/acount">Minha conta <i class="fa fa-user-circle"></i></a>' : '' ?>
         </div>
     </div>
 </div> <!-- header-top -->

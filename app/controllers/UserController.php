@@ -25,8 +25,7 @@ class UserController
             View::render('acount', ['user', $user]);
         }else {
             Redirect::to('/');
-        }
-        
+        } 
     }
 
     public function passwordreset() 

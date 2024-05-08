@@ -15,6 +15,7 @@ class Auth
                 'id' => $user->id,
                 'name' => $user->name,
                 'image' => $user->image
+                //Redirect::to('/dash');
             ]);
         }else {
             Session::set('logged', true);
@@ -23,6 +24,7 @@ class Auth
                 'name' => $user->name,
                 'image' => $user->image
             ]);
+            
             Redirect::to('/cartorders');
         }
     }

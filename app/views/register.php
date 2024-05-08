@@ -21,8 +21,9 @@
     <div class="settings--content wrapper">
         <div class="settings--rightcontentLogin">
             <div class="form--content">
-                <form action="" class="form">
+                <form action="/register/create" method="POST" class="form">
                     <h2 class="form__title">Registre-se Agora</h2>
+                    <?= getToken(); ?>
                     <div class="form-group">
                         <input type="text" name="name" id="name" placeholder="Nome Completo" />
                     </div>
@@ -30,13 +31,23 @@
                         <input type="email" name="email" id="email" placeholder="Email" />
                     </div>
                     <div class="form-group">
-                        <input type="text" name="phone" id="phone" placeholder="Telefoe" />
+                        <input type="text" name="phone" id="phone" placeholder="Telefone" />
+                    </div>
+                    <div class="form-group">
+                        <select name="gender" id="gender">
+                            <option value="M">Sexo</option>
+                            <option value="M">Masculino</option>
+                            <option value="F">Femenino</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="address" id="address" placeholder="Endereço" />
                     </div>
                     <div class="form-group">
                         <input type="password" name="password" id="password" placeholder="Senha" />
                     </div>
                     <div class="form-group">
-                        <input type="passwordc" name="passwordc" id="passwordc" placeholder="Confirme a senha" />
+                        <input type="password" name="passwordc" id="passwordc" placeholder="Confirme a senha" />
                     </div>
                     <div class="form--btn">
                         <button class="btn btn-primary" type="submit">Cadastrar</button>
