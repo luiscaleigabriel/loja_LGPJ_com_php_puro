@@ -8,15 +8,15 @@ class Auth
 {
     public static function logged(User $user) 
     {
-        if($user->is_admin) {
+        if($user->is_admin === true) {
             Session::set('logged', true);
             Session::set('admin', true);
             Session::set('user', [
                 'id' => $user->id,
                 'name' => $user->name,
                 'image' => $user->image
-                //Redirect::to('/dash');
             ]);
+            Redirect::to('/dash');
         }else {
             Session::set('logged', true);
             Session::set('user', [

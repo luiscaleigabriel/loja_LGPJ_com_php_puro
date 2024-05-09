@@ -16,6 +16,19 @@
 </section>
 <!-- end source -->
 
+<?php if($instances['session']::has('__flash')): ?>
+    <?php if($instances['session']::flashHas('success')):  ?>
+        <div class="success">
+            <?= $instances['session']::flashGet('success') ?>
+        </div>
+    <?php endif; ?>
+    <?php if($instances['session']::flashHas('error')): ?>
+        <div class="error">
+            <?= $instances['session']::flashGet('error') ?>
+        </div>
+    <?php endif;  ?>
+<?php endif; ?>
+
 <!-- start settings -->
 <section class="settings">
     <div class="settings--content wrapper">
@@ -23,7 +36,8 @@
         <div class="settings--right">
             <div class="form--content">
                 <h3 class="form__title">Alterar Senha</h3>
-                <form action="" class="form">
+                <form action="/resetpass" method="POST" class="form">
+                    <?= getToken() ?>
                     <div class="form-group">
                         <label for="password1">Senha actual</label>
                         <input type="password" name="password1" id="password1" placeholder="Digite a senha actual" />

@@ -4,7 +4,7 @@ namespace app\support;
 
 class Session 
 {
-    public static function set(string $index, mixed $value) 
+    public static function set(string $index, $value) 
     {
         $_SESSION[$index] = $value;
     }

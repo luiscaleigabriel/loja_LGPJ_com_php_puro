@@ -90,7 +90,6 @@ abstract class Model
             $conn = Transaction::getConnection();
 
             $data[$field] = $fieldValue;
-
             $prepere = $conn->prepare($sql);
 
             return $prepere->execute($data);

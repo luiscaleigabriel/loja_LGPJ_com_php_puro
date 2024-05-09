@@ -16,7 +16,11 @@ class LoginController
         if(!Session::has('logged')) {
             View::render('login');
         }else {
-            Redirect::to('/cartorders');
+            if(Session::has('admin')) {
+                Redirect::to('/dash');
+            }else {
+                Redirect::to('/cartorders');
+            }
         }
     }
 

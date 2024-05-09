@@ -29,11 +29,15 @@ try {
     $route->add('/cancel', 'GET', 'CheckoutController:cancel');
 
     $route->add('/acount', 'GET', 'UserController:index');
+    $route->add('/user/update', 'POST', 'UserController:update');
     $route->add('/resetpassword', 'GET', 'UserController:passwordreset');
+    $route->add('/resetpass', 'POST', 'UserController:reset');
 
     $route->add('/login', 'GET', 'LoginController:index');
     $route->add('/login', 'POST', 'LoginController:store');
     $route->add('/logout', 'GET', 'LoginController:logout');
+
+    $route->add('/dash', 'GET', 'DashboardController:index');
     
     $route->add('/register', 'GET', 'RegisterController:store');
     $route->add('/register/create', 'POST', 'RegisterController:create');
