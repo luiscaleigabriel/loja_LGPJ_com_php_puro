@@ -14,8 +14,8 @@ class Product extends Model
     public readonly int $quantity;
     public readonly string $image;
     public readonly bool $status;
-    public readonly string $created_at;
-    public readonly string $updated_at;
     public readonly int $idsubcategory;
     public readonly int $idcategory;
+    public readonly string $created_at;
+    public readonly string $updated_at;
 }

@@ -14,6 +14,7 @@ class Auth
             Session::set('user', [
                 'id' => $user->id,
                 'name' => $user->name,
+                'email' => $user->email,
                 'image' => $user->image
             ]);
             Redirect::to('/dash');
