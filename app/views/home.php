@@ -9,45 +9,45 @@
 <section class="carrocel--main">
     <section class="carrocel">
         <div class="carrocel--slider">
-            <div class="carrocel--slider__slide" style="background-image: url(assets/images/monitor-27-aoc-fhd-hdmi-vga-75hz-.jpg);">
+            <div class="carrocel--slider__slide" style="background-image: url(/assets/images/editors-keys-CtDrd7mWW6M-unsplash.jpg);">
                 <div class="carrocel--slider--content">
-                    <div class="product__name">AOC</div>
-                    <div class="product__description">MONITOR 27 "FULL HD HDMI/VGA 75HZ.</div>
+                    <div class="product__name">Teclado Gamer</div>
+                    <div class="product__description">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Lorem ipsum dolor sit amet.</div>
                     <a href="#" class="carrocel--slider--content__btn">Ver mais</a>
                 </div>
             </div>
-            <div class="carrocel--slider__slide" style="background-image: url(assets/images/playstation-5-ps5-4k-825gb-blu-ray-ccomando.jpg);">
+            <div class="carrocel--slider__slide" style="background-image: url(/assets/images/jan-bottinger--kChshW17rw-unsplash.jpg);">
                 <div class="carrocel--slider--content">
-                    <div class="product__name">SONY</div>
-                    <div class="product__description">PLAYSTATION - PS5 4K 825GB BLU-RAY COM COMANDO.</div>
+                    <div class="product__name">PC Gamer</div>
+                    <div class="product__description">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Lorem ipsum dolor sit amet.</div>
                     <a href="#" class="carrocel--slider--content__btn">Ver mais</a>
                 </div>
             </div>
-            <div class="carrocel--slider__slide" style="background-image: url(assets/images/pc-hp-aio-207-fhd-j4025-4g-256-ssd-w11h-branco.jpg);">
+            <div class="carrocel--slider__slide" style="background-image: url(/assets/images/istockphoto-1434007139-170667a.webp);">
                 <div class="carrocel--slider--content">
-                    <div class="product__name">HP</div>
-                    <div class="product__description">COMPUTADOR ALL-IN-ONE 20.7" FHD J4025 4G 256 SSD WINDOWS 11 HOME.</div>
+                    <div class="product__name">Notbook</div>
+                    <div class="product__description">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Lorem ipsum dolor sit amet.</div>
                     <a href="#" class="carrocel--slider--content__btn">Ver mais</a>
                 </div>
             </div>
-            <div class="carrocel--slider__slide" style="background-image: url(assets/images/port-asus-x515-156-i5-1135g7-8g-256ssd-w11h-cinza.jpg);">
-                <div class="carrocel--slider--content">
-                    <div class="product__name">ASUS</div>
-                    <div class="product__description">COMPUTADOR PORTÁTIL X515 15.6" 15-1135G7 8GB 256GB SSD W11H.</div>
-                    <a href="#" class="carrocel--slider--content__btn">Ver mais</a>
-                </div>
-            </div>
-            <div class="carrocel--slider__slide" style="background-image: url(assets/images/port-lenovo-ideapad-156-celeron-n4020-4g-500gb-w11s.jpg);">
-                <div class="carrocel--slider--content">
-                    <div class="product__name">HP</div>
-                    <div class="product__description">COMPUTADOR PORTÁTIL X515 15.6" 15-1235UFHD SLIM 16GB SSD WINDOWS.</div>
-                    <a href="#" class="carrocel--slider--content__btn">Ver mais</a>
-                </div>
-            </div>
-            <div class="carrocel--slider__slide" style="background-image: url(assets/images/smartphone-blackview-bv9300-12gb256gb-laser-preto.jpg);">
+            <div class="carrocel--slider__slide" style="background-image: url(assets/images/monitor.jpg);">
                 <div class="carrocel--slider--content">
                     <div class="product__name">BLACKVIEW</div>
-                    <div class="product__description">SMARTPHONE BV9300 12GB+256GB LASER PRETO.</div>
+                    <div class="product__description">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Lorem ipsum dolor sit amet.</div>
+                    <a href="#" class="carrocel--slider--content__btn">Ver mais</a>
+                </div>
+            </div>
+            <div class="carrocel--slider__slide" style="background-image: url(assets/images/frankie-VghbBAYqUJ0-unsplash.jpg);">
+                <div class="carrocel--slider--content">
+                    <div class="product__name">GMouse</div>
+                    <div class="product__description">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Lorem ipsum dolor sit amet.</div>
+                    <a href="#" class="carrocel--slider--content__btn">Ver mais</a>
+                </div>
+            </div>
+            <div class="carrocel--slider__slide" style="background-image: url(assets/images/kari-shea-1SAnrIxw5OY-unsplash.jpg);">
+                <div class="carrocel--slider--content">
+                    <div class="product__name">Macbook</div>
+                    <div class="product__description">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Lorem ipsum dolor sit amet.</div>
                     <a href="#" class="carrocel--slider--content__btn">Ver mais</a>
                 </div>
             </div>

@@ -1,11 +1,13 @@
 /**
  * Navbar efeito
  */
-const toggle = document.querySelector('#toggle');
+const toggle = document.querySelectorAll('.toggle');
 const navbar = document.querySelector('.navbar');
 
-toggle.addEventListener('click', () => {
-    navbar.classList.toggle('active');
+toggle.forEach(toggle => {
+    toggle.addEventListener('click', () => {
+        navbar.classList.toggle('active');
+    });
 });
 
 const dropdownUser = document.querySelector('.dropdown--user');

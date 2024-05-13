@@ -13,7 +13,7 @@
             </a> 
         </li>
         <li class="nav--list__item">
-            <a href="#" title="Categoria">
+            <a href="/category" title="Categoria">
                 <span><i class="nav-icon fas fa-file-alt"></i></span>
                 <span class="a--text">
                    Categoria 
@@ -50,6 +50,11 @@
                 <span class="a--text">
                     Usuários
                 </span>
+            </a>
+        </li>
+        <li class="nav--list__item">
+            <a href="#" class="toggle">
+                <span><i class="fas fa-bars"></i></span>
             </a>
         </li>
     </ul>

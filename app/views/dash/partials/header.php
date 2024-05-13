@@ -1,5 +1,5 @@
 <header class="header">
-    <button id="toggle"><i class="fas fa-bars"></i></button>
+    <button class="toggle" id="toggle"><i class="fas fa-bars"></i></button>
     <div class="dropdown--user">
         <div class="dropdown--user__name"><?= $instances['session']::get('user')['name'] ?></div>
         <div class="dropdown--user__image">

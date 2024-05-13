@@ -20,6 +20,8 @@ try {
 
     $route->add('/details', 'GET', 'ProductController:details');
 
+    $route->add('/category', 'GET', 'CategoryController:index');
+
     $route->add('/contact', 'GET', 'ContactController:index');
     
     $route->add('/orders', 'GET', 'OrderController:index');

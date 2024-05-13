@@ -17,4 +17,5 @@ class User extends Model
     public readonly bool $is_admin;
     public readonly string $created_at;
     public readonly string $updated_at;
+    public readonly bool $status;
 }
