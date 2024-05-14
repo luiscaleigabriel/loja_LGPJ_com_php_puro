@@ -30,6 +30,24 @@ class UserController
         } 
     }
 
+    public function show() 
+    {
+        if(Session::has('logged') && Session::has('admin')) {
+            View::render('dash/user/users');
+        }else {
+            Redirect::to('/');
+        }
+    }
+
+    public function create() 
+    {
+        if(Session::has('logged') && Session::has('admin')) {
+            View::render('dash/user/create');
+        }else {
+            Redirect::to('/');
+        }
+    }
+
     public function update() 
     {
         if(Auth::auth()) {

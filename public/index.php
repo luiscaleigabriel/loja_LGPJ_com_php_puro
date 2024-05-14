@@ -19,19 +19,29 @@ try {
     $route->add('/cart/update', 'POST', 'CartController:update');
 
     $route->add('/details', 'GET', 'ProductController:details');
+    $route->add('/products', 'GET', 'ProductController:index');
+    $route->add('/createproduct', 'GET', 'ProductController:create');
 
     $route->add('/category', 'GET', 'CategoryController:index');
+    $route->add('/createcategory', 'GET', 'CategoryController:create');
+
+    $route->add('/subcategory', 'GET', 'SubcategoryController:index');
+    $route->add('/createsubcategory', 'GET', 'SubcategoryController:create');
 
     $route->add('/contact', 'GET', 'ContactController:index');
     
+    $route->add('/dashorders', 'GET', 'OrderController:show');
     $route->add('/orders', 'GET', 'OrderController:index');
 
     $route->add('/checkout', 'GET', 'CheckoutController:checkout');
     $route->add('/success', 'GET', 'CheckoutController:success');
     $route->add('/cancel', 'GET', 'CheckoutController:cancel');
 
+    $route->add('/dashcrateusers', 'GET', 'UserController:create');
+    $route->add('/users', 'GET', 'UserController:show');
     $route->add('/acount', 'GET', 'UserController:index');
     $route->add('/user/update', 'POST', 'UserController:update');
+
     $route->add('/resetpassword', 'GET', 'UserController:passwordreset');
     $route->add('/resetpass', 'POST', 'UserController:reset');
 

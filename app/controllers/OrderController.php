@@ -17,4 +17,13 @@ class OrderController
             Redirect::to('/login');
         }
     }
+
+    public function show() 
+    {
+        if(Session::has('logged') && Session::has('admin')) {
+            View::render('dash/orders');
+        }else {
+            Redirect::to('/');
+        }
+    }
 }

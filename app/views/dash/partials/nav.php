@@ -21,7 +21,7 @@
             </a>
         </li>
         <li class="nav--list__item">
-            <a href="#" title="Sub Categoria">
+            <a href="/subcategory" title="Sub Categoria">
                 <span><i class="nav-icon fas fa-file-alt"></i></span>
                 <span class="a--text">
                     Sub Categoria
@@ -29,7 +29,7 @@
             </a>
         </li>
         <li class="nav--list__item">
-            <a href="#" title="Produtos">
+            <a href="/products" title="Produtos">
                 <span><i class="nav-icon fas fa-tag"></i></span>
                 <span class="a--text">
                     Produtos
@@ -37,7 +37,7 @@
             </a>
         </li>
         <li class="nav--list__item">
-            <a href="#" title="Compras">
+            <a href="/dashorders" title="Compras">
                 <span><i class="nav-icon fas fa-shopping-bag"></i></span>
                 <span class="a--text">
                     Compras
@@ -45,7 +45,7 @@
             </a>
         </li>
         <li class="nav--list__item">
-            <a href="#" title="Usuários">
+            <a href="/users" title="Usuários">
                 <span><i class="nav-icon  fas fa-users"></i></span>
                 <span class="a--text">
                     Usuários

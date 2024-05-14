@@ -8,7 +8,7 @@
 
 <div class="dash--title">
     <h2 class="dash__title">Categorias</h2>
-    <a href="#" class="btn btn-primary">Nova categoria</a>
+    <a href="/createcategory" class="btn btn-primary">Nova categoria</a>
 </div>
 
 <div class="table--group">
