@@ -46,9 +46,6 @@
                     <div class="form-group">
                         <input type="password" name="password" id="password" placeholder="Senha" />
                     </div>
-                    <div class="form-group">
-                        <input type="password" name="passwordc" id="passwordc" placeholder="Confirme a senha" />
-                    </div>
                     <div class="form--btn">
                         <button class="btn btn-primary" type="submit">Cadastrar</button>
                     </div>

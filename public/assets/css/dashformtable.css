@@ -242,3 +242,8 @@ label {
 .form-rigth > .form-group:nth-child(2) {
     margin: 2rem 0;
 }
+
+.form-left > .form-group:nth-child(2n) {
+    margin: 2rem 0;
+}
+

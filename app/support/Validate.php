@@ -44,7 +44,7 @@ class Validate
                     }
 
                     $inputValidation[$index] = $this->$validation($index);
-
+                    var_dump($inputValidation);
                     if(empty($inputValidation[$index])) {
                         break;
                     }

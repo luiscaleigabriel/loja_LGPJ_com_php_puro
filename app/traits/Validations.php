@@ -13,11 +13,12 @@ trait Validations
 
     public function required($field) 
     {
-        if(empty($field)) {
+        $data = Request::input($field);
+        if(empty($data)) {
             return null;
         }
     }
-    public function maxLen( $field, $value = 6) 
+    public function maxLen( $field, $value = 8) 
     {
         $data = Request::input($field);
         if(mb_strlen($data) >= $value) {

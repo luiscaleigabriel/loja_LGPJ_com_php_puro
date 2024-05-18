@@ -11,7 +11,7 @@
     <a href="/products" class="btn btn-primary">Voltar</a>
 </div>
 
-<form action="" method="post" class="form--main">
+<form action="" method="post" class="form--main" enctype="multipart/form-data">
     <div class="form-sencundary">
         <div class="form-left">
             <div class="form-group">
@@ -23,9 +23,19 @@
                     <label for="description">Descrição</label>
                     <textarea name="description" id="description" cols="30" rows="10"></textarea>
                 </div>
+                <div class="form-group__div row">
+                    <label for="price">Preço</label>
+                    <input type="text" name="price" id="price" />
+                </div>
             </div>
 
-            
+            <div class="form-group foot">
+            <h2 class="form_title">Mídia</h2>
+                <div class="form-group__div row">
+                    <label for="image">Imagem</label>
+                    <input type="file" name="image" id="image" />
+                </div>
+            </div>
         </div>
         <div class="form-rigth">
             <div class="form-group">
