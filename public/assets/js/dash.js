@@ -24,3 +24,14 @@ const dropdown = document.querySelector('.dropdown');
 dropdownUser.addEventListener('click', () => {
     dropdown.classList.toggle('display');
 });
+
+/**
+ * Gerar slug
+ */
+
+const nameField = document.querySelector('#name');
+const slug = document.querySelector('#slug');
+
+nameField.addEventListener('input', () => {
+    slug.value = nameField.value.toLowerCase();
+});

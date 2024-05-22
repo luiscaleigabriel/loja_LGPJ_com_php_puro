@@ -11,15 +11,15 @@
     <a href="/subcategory" class="btn btn-primary">Voltar</a>
 </div>
 
-<form action="" method="post" class="form--main">
+<form action="/createsubcategory" method="post" class="form--main">
+    <?= getToken() ?>
     <div class="form-group">
         <div class="form-group__div row">
             <label for="category">Categoria</label>
             <select name="category" id="category">
-                <option value="1">Sansung</option>
-                <option value="2">Sansung</option>
-                <option value="3">Sansung</option>
-                <option value="4">Sansung</option>
+                <?php foreach($categories as $category): ?>
+                    <option value="<?= $category->id ?>"><?= $category->name ?></option>
+                <?php endforeach; ?>
             </select>
         </div>
         <div class="form-group__div">

@@ -88,7 +88,7 @@
         </h2>
         <div class="categories--category">
             <div class="categories--category__image">
-                <img src="assets/images/image3.jpg" alt="categories" />
+                <img src="./assets/images/port-hp156-i7-1255u-fhd-slim-16g-512-ssd-w11h-prata.jpg" alt="categories" />
             </div>
             <a href="#">
                 <p class="categories--category__text">
@@ -100,7 +100,7 @@
         </div>
         <div class="categories--category">
             <div class="categories--category__image">
-                <img src="assets/images/pc.webp" alt="categories" />
+                <img src="./assets/images/kari-shea-1SAnrIxw5OY-unsplash.jpg" alt="categories" />
             </div>
             <a href="#">
                 <p class="categories--category__text">
@@ -112,7 +112,7 @@
         </div>   
         <div class="categories--category">
             <div class="categories--category__image">
-                <img src="assets/images/cat-2.jpg" alt="categories" />
+                <img src="./assets/images/webcam-genius-qcam-6000-vermelha.jpg" alt="categories" />
             </div>
             <a href="#">
                 <p class="categories--category__text">
@@ -124,7 +124,7 @@
         </div>
         <div class="categories--category">
             <div class="categories--category__image">
-                <img src="assets/images/image2.jpg" alt="categories" />
+                <img src="./assets/images/monitor-27-aoc-fhd-hdmi-vga-75hz-.jpg" alt="categories" />
             </div>
             <a href="#">
                 <p class="categories--category__text">
@@ -136,40 +136,40 @@
         </div>   
         <div class="categories--category">
             <div class="categories--category__image">
-                <img src="assets/images/product-1.jpg" alt="categories" />
+                <img src="./assets/images/tecladorato-mahnt-wifi-preto.jpg" alt="categories" />
             </div>
             <a href="#">
                 <p class="categories--category__text">
-                    <span>Relógios</span>
+                    <span>Teclado e mouse</span>
                     <span>100 produtos</span>
                 </p>
             </a> 
         </div>   
         <div class="categories--category">
             <div class="categories--category__image">
-                <img src="assets/images/product-7.jpg" alt="categories" />
+                <img src="./assets/images/hp-officejet-e-aio-pro-9013-2218.jpg" alt="categories" />
             </div>
             <a href="#">
                 <p class="categories--category__text">
-                    <span>Acessórios</span>
+                    <span>Impressoras</span>
                     <span>100 produtos</span>
                 </p>
             </a>
         </div>   
         <div class="categories--category">
             <div class="categories--category__image">
-                <img src="assets/images/image4.jpg" alt="categories" />
+                <img src="./assets/images/smartphone-blackview-bv9300-12gb256gb-torch-preto.jpg" alt="categories" />
             </div>
             <a href="#">
                 <p class="categories--category__text">
-                    <span>Teclados</span>
+                    <span>Smatphone</span>
                     <span>100 produtos</span>
                 </p>
             </a>
         </div>   
         <div class="categories--category">
             <div class="categories--category__image">
-                <img src="assets/images/jan-bottinger--kChshW17rw-unsplash.jpg" alt="categories" />
+                <img src="./assets/images/jan-bottinger--kChshW17rw-unsplash.jpg" alt="categories" />
             </div>
             <a href="#">
                 <p class="categories--category__text">

@@ -21,36 +21,26 @@
     <nav class="nav--dropdown wrapper">
         <ul class="nav--dropdown--list">
             <li class="nav--dropdown--list__item">
-                <button class="nav--dropdown--list__btn">Electrónicos</button>
+                <button class="nav--dropdown--list__btn">Produtos</button>
                 <ul class="nav--dropdown--menu">
-                    <li class="nav--dropdown--menu__item">
-                        <a href="#">Celulares</a>
-                    </li>
-                    <li class="nav--dropdown--menu__item">
-                        <a href="#">Tabletes</a>
-                    </li>
-                    <li class="nav--dropdown--menu__item">
-                        <a href="#">Computadores</a>
-                    </li>
-                    <li class="nav--dropdown--menu__item">
-                        <a href="#">Micrô-fone</a>
-                    </li>
-                    <li class="nav--dropdown--menu__item">
-                        <a  href="#">Watches</a>
-                    </li>
+                    <?php foreach($instances['categories']::all() as $category): ?>
+                        <li class="nav--dropdown--menu__item">
+                            <a href="#"><?=  $category->name ?></a>
+                        </li>
+                    <?php endforeach; ?>
                 </ul>
             </li>
             <li class="nav--dropdown--list__item">
-                <button class="nav--dropdown--list__btn">Electrodomésticos</button>
+                <button class="nav--dropdown--list__btn">Imagem e Som</button>
                 <ul class="nav--dropdown--menu">
                     <li class="nav--dropdown--menu__item">
-                        <a href="#">TVs</a>
+                        <a href="#">Televisão</a>
                     </li>
                     <li class="nav--dropdown--menu__item">
-                        <a href="#">Máquinas de Lavar</a>
+                        <a href="#">Câmeras</a>
                     </li>
                     <li class="nav--dropdown--menu__item">
-                        <a href="#">Ar condicionado</a>
+                        <a href="#">Diversos</a>
                     </li>
                 </ul>
             </li>

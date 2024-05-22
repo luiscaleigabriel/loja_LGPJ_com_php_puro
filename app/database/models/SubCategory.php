@@ -3,7 +3,7 @@
 namespace app\database\models;
 
 
-class Category extends Model 
+class SubCategory extends Model 
 {
     public static string $table = 'subcategory';
     public readonly int $id;

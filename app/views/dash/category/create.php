@@ -11,7 +11,8 @@
     <a href="/category" class="btn btn-primary">Voltar</a>
 </div>
 
-<form action="" method="post" class="form--main">
+<form action="/createcategory" method="post" class="form--main">
+    <?= getToken() ?>
     <div class="form-group">
         <div class="form-group__div">
             <label for="name">Nome</label>

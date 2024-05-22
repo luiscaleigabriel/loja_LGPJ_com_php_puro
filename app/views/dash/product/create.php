@@ -11,7 +11,8 @@
     <a href="/products" class="btn btn-primary">Voltar</a>
 </div>
 
-<form action="" method="post" class="form--main" enctype="multipart/form-data">
+<form action="/createproduct" method="post" class="form--main" enctype="multipart/form-data">
+    <?= getToken() ?>
     <div class="form-sencundary">
         <div class="form-left">
             <div class="form-group">
@@ -27,13 +28,17 @@
                     <label for="price">Preço</label>
                     <input type="text" name="price" id="price" />
                 </div>
+                <div class="form-group__div row">
+                    <label for="quantity">Quantidade</label>
+                    <input type="number" name="quantity" id="quantity" />
+                </div>
             </div>
 
             <div class="form-group foot">
             <h2 class="form_title">Mídia</h2>
                 <div class="form-group__div row">
-                    <label for="image">Imagem</label>
-                    <input type="file" name="image" id="image" />
+                    <label for="file">Imagem</label>
+                    <input type="file" name="file" />
                 </div>
             </div>
         </div>
@@ -52,15 +57,19 @@
                     <h2 class="form_title">Categoria do produto</h2>
                     <label for="category">Categoria</label>
                     <select name="category" id="category">
-                        <option value="1">sansung</option>
-                        <option value="0">sansung</option>
+                        <?php foreach($categories as $category): ?>
+                            <option value="<?= $category->id?>"><?= $category->name ?></option>
+                        <?php endforeach; ?>
                     </select>
                 </div>
                 <div class="form-group__div row">
                     <label for="subcategory">SubCategoria</label>
                     <select name="subcategory" id="subcategory">
-                        <option value="1">sansung</option>
-                        <option value="0">sansung</option>
+                    <?php foreach($subCategories as $subCategory): ?>
+                            <option value="<?= $subCategory->id ?>">
+                                <?= $subCategory->name ?>
+                            </option>
+                        <?php endforeach; ?>
                     </select>
                 </div>
             </div>

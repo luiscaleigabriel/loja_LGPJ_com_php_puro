@@ -21,12 +21,15 @@ try {
     $route->add('/details', 'GET', 'ProductController:details');
     $route->add('/products', 'GET', 'ProductController:index');
     $route->add('/createproduct', 'GET', 'ProductController:create');
+    $route->add('/createproduct', 'POST', 'ProductController:store');
 
     $route->add('/category', 'GET', 'CategoryController:index');
     $route->add('/createcategory', 'GET', 'CategoryController:create');
+    $route->add('/createcategory', 'POST', 'CategoryController:store');
 
     $route->add('/subcategory', 'GET', 'SubcategoryController:index');
     $route->add('/createsubcategory', 'GET', 'SubcategoryController:create');
+    $route->add('/createsubcategory', 'POST', 'SubcategoryController:store');
 
     $route->add('/contact', 'GET', 'ContactController:index');
     

@@ -16,6 +16,19 @@
 </section>
 <!-- end source -->
 
+<?php if($instances['session']::has('__flash')): ?>
+    <?php if($instances['session']::flashHas('success')):  ?>
+        <div class="success">
+            <?= $instances['session']::flashGet('success') ?>
+        </div>
+    <?php endif; ?>
+    <?php if($instances['session']::flashHas('error')): ?>
+        <div class="error">
+            <?= $instances['session']::flashGet('error') ?>
+        </div>
+    <?php endif;  ?>
+<?php endif; ?>
+
 <!-- start settings -->
 <section class="settings">
     <div class="settings--content wrapper">
