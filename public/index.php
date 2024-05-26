@@ -18,6 +18,8 @@ try {
     $route->add('/cart/remove', 'GET', 'CartController:delete');
     $route->add('/cart/update', 'POST', 'CartController:update');
 
+    $route->add('/shop', 'GET', 'ShopController:index');
+
     $route->add('/details', 'GET', 'ProductController:details');
     $route->add('/products', 'GET', 'ProductController:index');
     $route->add('/createproduct', 'GET', 'ProductController:create');

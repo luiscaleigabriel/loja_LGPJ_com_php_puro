@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\core\View;
 use app\database\models\User;
+use app\database\Transaction;
 use app\support\Csrf;
 use app\support\Redirect;
 use app\support\Request;
@@ -15,7 +16,13 @@ class RegisterController
     public function store() 
     {
         if(!Session::has('logged')) {
-            View::render('register');
+            try {
+                Transaction::open();
+                View::render('register');
+                Transaction::close();
+            } catch (\Throwable $th) {
+                Transaction::rollback();
+            }
         }else {
             Redirect::to('/');
         }
@@ -45,13 +52,19 @@ class RegisterController
             $data['password'] = password_hash(Request::input('password'), PASSWORD_DEFAULT);
         }
 
-        $created = User::create($data);
+        try {
+            Transaction::open();
+            $created = User::create($data);
 
-        if($created) {
-            Redirect::to('/login');
-        }else {
-            Session::flash('error', 'Ocorreu um erro!, verifique a sua conexão a internet ou tente mais tarde');
-            Redirect::back();
+            if($created) {
+                Redirect::to('/login');
+            }else {
+                Session::flash('error', 'Ocorreu um erro!, verifique a sua conexão a internet ou tente mais tarde');
+                Redirect::back();
+            }
+            Transaction::close();
+        } catch (\Throwable $th) {
+            Transaction::rollback();
         }
     }
 

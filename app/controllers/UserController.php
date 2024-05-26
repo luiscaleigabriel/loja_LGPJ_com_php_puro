@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\core\View;
 use app\database\models\User;
+use app\database\Transaction;
 use app\support\Auth;
 use app\support\Csrf;
 use app\support\Redirect;
@@ -23,8 +24,14 @@ class UserController
     public function index() 
     {
         if(Auth::auth()) {
-            $user = $this->user->where('id', Session::get('user')['id']);
-            View::render('acount', ['user' => $user]);
+            try {
+                Transaction::open();
+                $user = $this->user->where('id', Session::get('user')['id']);
+                View::render('acount', ['user' => $user]);
+                Transaction::close();
+            } catch (\Throwable $th) {
+                Transaction::rollback();
+            }
         }else {
             Redirect::to('/');
         } 
@@ -33,7 +40,13 @@ class UserController
     public function show() 
     {
         if(Session::has('logged') && Session::has('admin')) {
-            View::render('dash/user/users');
+            try {
+                Transaction::open();
+                View::render('dash/user/users');
+                Transaction::close();
+            } catch (\Throwable $th) {
+                Transaction::rollback();
+            }
         }else {
             Redirect::to('/');
         }
@@ -42,7 +55,13 @@ class UserController
     public function create() 
     {
         if(Session::has('logged') && Session::has('admin')) {
-            View::render('dash/user/create');
+            try {
+                Transaction::open();
+                View::render('dash/user/create');
+                Transaction::close();
+            } catch (\Throwable $th) {
+                Transaction::rollback();
+            }
         }else {
             Redirect::to('/');
         }
@@ -52,6 +71,7 @@ class UserController
     {
         if(Auth::auth()) {
             try {
+                Transaction::open();
                 Csrf::validateToken();
                 $data = Request::all();
                 array_shift($data);
@@ -67,7 +87,9 @@ class UserController
                     Session::flash('error', 'Erro ao atualizar tente novamente!');
                     Redirect::back();
                 } 
+                Transaction::close();
             } catch (Exception $e) {
+                Transaction::rollback();
                 Redirect::back();
             }
         }else {
@@ -78,7 +100,13 @@ class UserController
     public function passwordreset() 
     {
         if(Auth::auth()) {
-            View::render('resetpass');
+            try {
+                Transaction::open();
+                View::render('resetpass');
+                Transaction::close();
+            } catch (\Throwable $th) {
+                Transaction::rollback();
+            }
         }else {
             Redirect::to('/');
         } 

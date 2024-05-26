@@ -4,6 +4,7 @@ namespace app\core;
 
 use app\database\models\Category;
 use app\database\models\Product;
+use app\database\models\SubCategory;
 use app\support\Session;
 use Exception;
 use League\Plates\Engine;
@@ -31,6 +32,7 @@ class View
         self::addInstance('cart', new CartInfo);
         self::addInstance('session', Session::class);
         self::addInstance('categories', Category::class);
+        self::addInstance('subCategories', SubCategory::class);
 
         $templates = new Engine($filePath);
         $templates->addData(['instances' => self::$instances]);

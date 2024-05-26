@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\core\View;
+use app\database\Transaction;
 use app\support\Redirect;
 use app\support\Session;
 
@@ -11,7 +12,13 @@ class OrderController
     public function index() 
     {
         if(Session::has('logged')) {
-            View::render('orders');
+            try {
+                Transaction::open();
+                View::render('orders');
+                Transaction::close();
+            } catch (\Throwable $th) {
+                Transaction::rollback();
+            }
         }else {
             Session::flash('error', 'Faça login para ver as suas compras');
             Redirect::to('/login');
@@ -21,7 +28,13 @@ class OrderController
     public function show() 
     {
         if(Session::has('logged') && Session::has('admin')) {
-            View::render('dash/orders');
+            try {
+                Transaction::open();
+                View::render('dash/orders');
+                Transaction::close();
+            } catch (\Throwable $th) {
+                Transaction::rollback();
+            }
         }else {
             Redirect::to('/');
         }

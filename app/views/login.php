@@ -1,6 +1,10 @@
 <?= $this->layout('master') ?>
 
-<?php $this->start('style') ?>
+<?php
+
+use app\support\Csrf;
+
+ $this->start('style') ?>
 <link rel="stylesheet" href="assets/css/forms.css" />
 <?php $this->stop() ?>
 
@@ -36,6 +40,7 @@
             <div class="form--content">
                 <form action="/login" method="POST" class="form login">
                     <h2 class="form__title">Bem vindo de volta</h2>
+                    <?= getToken() ?>
                     <div class="form-group">
                         <input type="email" name="email" id="email" placeholder="Email" />
                     </div>

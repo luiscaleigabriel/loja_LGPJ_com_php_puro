@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\core\CartInfo;
 use app\core\View;
+use app\database\Transaction;
 use app\support\Auth;
 use app\support\Redirect;
 use app\support\Session;
@@ -54,7 +55,13 @@ class CheckoutController
 
     public function success() 
     {
-        return View::render('success');
+        try {
+            Transaction::open();
+            View::render('success');
+            Transaction::close();
+        } catch (\Throwable $th) {
+            Transaction::rollback();
+        }
     }
 
     public function cancel() 

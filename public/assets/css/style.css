@@ -281,7 +281,7 @@ ul {
 .nav--dropdown--list__btn::after {
     content: "";
     position: absolute;
-    top: 1.8rem;
+    top: 1.6rem;
     right: 0;
 
     width: 0;
@@ -292,6 +292,11 @@ ul {
     margin-left: auto;
     margin-right: auto;
     transition: var(--transition1);
+    transform: rotate(-90deg);
+}
+
+.nav--dropdown--list__btn.dropdown--active::after {
+    transform: rotate(0);
 }
 
 .nav--dropdown--list__btn:hover:after {
@@ -304,12 +309,48 @@ ul {
 
 .nav--dropdown--list__item {
     position: relative;
-    width: 100%;
+    transition: var(--transition1);
 }
+
+.nav--dropdown--menu {
+    position: absolute;
+    top: 3.5rem;
+
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    transition: var(--transition1);
+    border-radius: 5px;
+    background-color: var(--bs-dark);
+}
+
+.nav--dropdown--menu.dropdown--active {
+    animation: suave 1s ease forwards;
+}
+
+@keyframes suave {
+    from {
+        height: 0;
+        width: 0;
+        opacity: 0;
+    }
+    to {
+        height: auto;
+        width: 30rem;
+        opacity: 1;
+    }
+}
+
+/* .nav--dropdown--menu .nav--dropdown--menu__item {
+    display: none;
+}
+
+.nav--dropdown--menu.dropdown--active .nav--dropdown--menu__item {
+    display: block;
+} */
 
 .nav--dropdown--menu__item a {
     display: block;
-    width: 100%;
     font-size: 1.2rem;
     padding: .8rem 1rem;
     font-weight: 500;
@@ -318,7 +359,6 @@ ul {
 
 .nav--dropdown--menu__item a {
     display: block;
-    width: 100%;
     font-size: 1.2rem;
     padding: .8rem 1rem;
     font-weight: 500;
@@ -328,10 +368,6 @@ ul {
 .nav--dropdown--menu__item a:hover {
     color: var(--bs-warning);
     background-color: var(--bs-gray);
-}
-
-.dropdown--active {
-    display: block;
 }
 
 .header--cartLink {
@@ -1235,6 +1271,7 @@ span.priceNow {
     width: 100%;
     cursor: pointer;
     border: none;
+    text-align: left;
     background-color: transparent;
 }
 

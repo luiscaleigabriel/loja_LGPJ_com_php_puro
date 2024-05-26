@@ -25,23 +25,19 @@
                 <ul class="nav--dropdown--menu">
                     <?php foreach($instances['categories']::all() as $category): ?>
                         <li class="nav--dropdown--menu__item">
-                            <a href="#"><?=  $category->name ?></a>
+                            <a href="/shop?category=<?= $category->id ?>"><?=  $category->name ?></a>
                         </li>
                     <?php endforeach; ?>
                 </ul>
             </li>
             <li class="nav--dropdown--list__item">
-                <button class="nav--dropdown--list__btn">Imagem e Som</button>
+                <button class="nav--dropdown--list__btn">Diversos</button>
                 <ul class="nav--dropdown--menu">
-                    <li class="nav--dropdown--menu__item">
-                        <a href="#">Televisão</a>
-                    </li>
-                    <li class="nav--dropdown--menu__item">
-                        <a href="#">Câmeras</a>
-                    </li>
-                    <li class="nav--dropdown--menu__item">
-                        <a href="#">Diversos</a>
-                    </li>
+                    <?php foreach($instances['subCategories']::all() as $subCategory): ?>
+                        <li class="nav--dropdown--menu__item">
+                            <a href="/shop?subcategory=<?= $subCategory->id ?>"><?=  $subCategory->name ?></a>
+                        </li>
+                    <?php endforeach; ?>
                 </ul>
             </li>
         </ul>
