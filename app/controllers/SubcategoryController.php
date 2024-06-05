@@ -9,6 +9,7 @@ use app\support\Redirect;
 use app\support\Request;
 use app\support\Session;
 use app\database\models\SubCategory;
+use app\database\Pagination;
 use app\database\Transaction;
 
 class SubcategoryController 
@@ -18,8 +19,13 @@ class SubcategoryController
         if(Session::has('logged') && Session::has('admin')) {
             try {
                 Transaction::open();
-                $subCategories = SubCategory::all();
-                View::render('dash/subcategory/subcategory', ['subCategories' => $subCategories]);
+                $pagination = new Pagination;
+                $pagination->setItemsPerPages(10);
+                $subCategories = SubCategory::all('*', $pagination);
+                View::render('dash/subcategory/subcategory', [
+                    'subCategories' => $subCategories,
+                    'pagination' => $pagination
+                ]);
                 Transaction::close();
             } catch (\Throwable $th) {
                 Transaction::rollback();

@@ -30,42 +30,42 @@ class RegisterController
 
     public function create() 
     {
-        // $validate = new Validate;
-        // $validated = $validate->validate([
-        //     'name' => 'required',
-        //     'email' => 'required|email',
-        //     'phone' => 'required',
-        //     'gender' => 'required',
-        //     'address' => 'required',
-        //     'password' => 'required|maxlen:6'
-        // ]);
+        $validate = new Validate;
+        $validated = $validate->validate([
+            'name' => 'required',
+            // 'email' => 'required|email',
+            // 'phone' => 'required',
+            // 'gender' => 'required',
+            // 'address' => 'required',
+            'password' => 'required|maxlen:8'
+        ]);
 
-        $data = Request::all();
+        // $data = Request::all();
 
-        Csrf::validateToken();
+        // Csrf::validateToken();
 
-        if(array_key_exists('__token', $data)) {
-            array_shift($data);
-        }
+        // if(array_key_exists('__token', $data)) {
+        //     array_shift($data);
+        // }
 
-        if(array_key_exists('password', $data)) {
-            $data['password'] = password_hash(Request::input('password'), PASSWORD_DEFAULT);
-        }
+        // if(array_key_exists('password', $data)) {
+        //     $data['password'] = password_hash(Request::input('password'), PASSWORD_DEFAULT);
+        // }
 
-        try {
-            Transaction::open();
-            $created = User::create($data);
+        // try {
+        //     Transaction::open();
+        //     $created = User::create($data);
 
-            if($created) {
-                Redirect::to('/login');
-            }else {
-                Session::flash('error', 'Ocorreu um erro!, verifique a sua conexão a internet ou tente mais tarde');
-                Redirect::back();
-            }
-            Transaction::close();
-        } catch (\Throwable $th) {
-            Transaction::rollback();
-        }
+        //     if($created) {
+        //         Redirect::to('/login');
+        //     }else {
+        //         Session::flash('error', 'Ocorreu um erro!, verifique a sua conexão a internet ou tente mais tarde');
+        //         Redirect::back();
+        //     }
+        //     Transaction::close();
+        // } catch (\Throwable $th) {
+        //     Transaction::rollback();
+        // }
     }
 
 }

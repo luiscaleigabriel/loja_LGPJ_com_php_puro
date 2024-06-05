@@ -7,7 +7,7 @@
 <?php $this->insert('dash/partials/header') ?>
 
 <div class="dash--title">
-    <h2 class="dash__title">Produtos</h2>
+    <h2 class="dash__title">Produtos (<?= $total ?>)</h2>
     <a href="/createproduct" class="btn btn-primary">Novo produto</a>
 </div>
 
@@ -28,7 +28,7 @@
     <div class="table--top">
         <div class="search--form">
             <form class="form--search" action="">
-                <input type="search" name="search" id="search" placeholder="Buscar por..." /> <button><i class="fa fa-search"></i></button>
+            <input type="search" name="search" id="search" placeholder="Buscar por..." /> <button><i class="fa fa-search"></i></button>
             </form>
         </div>
     </div>
@@ -76,22 +76,6 @@
             </tbody>
     </table>
     <div class="table--button">
-        <ul class="pagination">
-            <li class="pagination__item">
-                <a href="#"><<</a>
-            </li>
-            <li class="pagination__item">
-                <a href="#">1</a>
-            </li>
-            <li class="pagination__item">
-                <a href="#">2</a>
-            </li>
-            <li class="pagination__item">
-                <a href="#">3</a>
-            </li>
-            <li class="pagination__item">
-                <a href="#">>></a>
-            </li>
-        </ul>
+        <?= $pagination->links() ?>
     </div>
 </div>

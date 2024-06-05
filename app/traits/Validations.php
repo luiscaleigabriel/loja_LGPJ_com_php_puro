@@ -18,7 +18,7 @@ trait Validations
             return null;
         }
     }
-    public function maxLen( $field, $value = 8) 
+    public function maxLen($field, $value = 8) 
     {
         $data = Request::input($field);
         if(mb_strlen($data) >= $value) {

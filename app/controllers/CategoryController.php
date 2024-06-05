@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\core\View;
 use app\database\models\Category;
+use app\database\Pagination;
 use app\database\Transaction;
 use app\support\Csrf;
 use app\support\Redirect;
@@ -17,8 +18,14 @@ class CategoryController
         if(Session::has('logged') && Session::has('admin')) {
             try {
                 Transaction::open();
-                $categories = Category::all();
-                View::render('dash/category/category', ['categories' => $categories]);
+                $pagination = new Pagination;
+                $pagination->setItemsPerPages(10);
+                $categories = Category::all('*', $pagination);
+
+                View::render('dash/category/category', [
+                    'categories' => $categories,
+                    'pagination' => $pagination
+                ]);
                 Transaction::close();
             } catch (\Throwable $th) {
                 Transaction::rollback();

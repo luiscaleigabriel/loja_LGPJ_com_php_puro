@@ -42,6 +42,7 @@ class UserController
         if(Session::has('logged') && Session::has('admin')) {
             try {
                 Transaction::open();
+                
                 View::render('dash/user/users');
                 Transaction::close();
             } catch (\Throwable $th) {
@@ -116,8 +117,7 @@ class UserController
     {
         if(Auth::auth()) {
             try {
-                Csrf::validateToken();
-                
+                Csrf::validateToken();         
             } catch (Exception $e) {
                 Redirect::back();
             }

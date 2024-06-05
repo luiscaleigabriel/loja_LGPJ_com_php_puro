@@ -6,6 +6,7 @@ use app\core\View;
 use app\database\models\Category;
 use app\database\models\Product;
 use app\database\models\SubCategory;
+use app\database\Pagination;
 use app\database\Transaction;
 use app\support\Csrf;
 use app\support\Redirect;
@@ -20,10 +21,17 @@ class ProductController
         if(Session::has('logged') && Session::has('admin')) {
             try {
                 Transaction::open();
+                $pagination = new Pagination;
+                $pagination->setItemsPerPages(6);
 
-                $products = Product::all();
+                $products = Product::all('*', $pagination);
+                $total = Product::count();
             
-                View::render('dash/product/product', ['products' => $products]);
+                View::render('dash/product/product', [
+                    'products' => $products, 
+                    'total' => $total, 
+                    'pagination' => $pagination
+                ]);
 
                 Transaction::close();
             } catch (\Throwable $th) {

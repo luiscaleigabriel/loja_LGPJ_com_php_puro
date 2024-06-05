@@ -114,7 +114,8 @@
     background-color: var(--bs-white);
 }
 
-.pagination__item:hover {
+.pagination__item:hover,
+.pagination__item.activeLink {
     background-color: #cccccc50;
 }
 

@@ -2,25 +2,46 @@
 
 namespace app\database\models;
 
+use app\database\Pagination;
 use app\database\Transaction;
+use app\database\Connection;
 use PDO;
+use PDOException;
 
 abstract class Model 
 {
     protected static string $table;
 
-    public static function all(string $fields = '*') 
+    public static function all(string $fields = '*', Pagination|string $pagination = '') 
     {
+        if(!empty($pagination)) {
+            $pagination->setTotalItems(self::count());
+            $pagination = $pagination->dump();
+        }
+
         $conn = Transaction::getConnection();
 
         $tableName = static::$table;
 
-        $query = $conn->prepare("select {$fields} from {$tableName}");
+        $query = $conn->prepare("select {$fields} from {$tableName} {$pagination}");
         $query->execute();
 
         return $query->fetchAll(PDO::FETCH_CLASS, static::class);
            
     }
+
+    public static function count() 
+    {
+        try {
+            $conn = Connection::connect();
+            $tableName = static::$table;
+            $query = $conn->query("select * from {$tableName}");
+            return $query->rowCount();
+        } catch (PDOException $th) {
+            dd($th->getMessage());
+        }  
+    }
+
 
     public static function where(string $field, string $value, string $fields = '*') 
     {
