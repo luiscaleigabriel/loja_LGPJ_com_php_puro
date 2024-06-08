@@ -21,6 +21,11 @@
     <nav class="nav--dropdown wrapper">
         <ul class="nav--dropdown--list">
             <li class="nav--dropdown--list__item">
+                <a href="/">
+                    <button class="nav--dropdown--list__btn-home">Home</button>
+                </a>
+            </li>
+            <li class="nav--dropdown--list__item">
                 <button class="nav--dropdown--list__btn">Produtos</button>
                 <ul class="nav--dropdown--menu">
                     <?php foreach($instances['categories']::all() as $category): ?>

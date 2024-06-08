@@ -23,27 +23,26 @@ class Validate
 
                 if(substr_count($field, ':') === 1) {
                     list($method, $param) = explode(':', $field);
-
-                    if(!method_exists($this, $method)) {
-                        throw new Exception("A válidação {$method} não existe");
-                    }
-                    $inputValidation[$index] = $this->$method($index,$param);
                 }
 
-                $inputValidation[$index] = $this->$method($index);
+                if(!method_exists($this, $method)) {
+                    throw new Exception("A válidação {$method} não existe");
+                }
+
+                $inputValidation[$index] = $this->$method($index,$param);
             }else {
                 $validations = explode('|', $field);
                 $param = '';
                 foreach($validations as $validation) {
                     if(substr_count($validation, ':') === 1) {
                         list($validation, $param) = explode(':', $validation);
-                        if(!method_exists($this, $validation)) {
-                            throw new Exception("A válidação {$validation} não existe");
-                        }
-                        $inputValidation[$index] = $this->$validation($index, $param);
                     }
 
-                    $inputValidation[$index] = $this->$validation($index);
+                    if(!method_exists($this, $validation)) {
+                        throw new Exception("O método {$validation} não existe na validação");
+                    }
+
+                    $inputValidation[$index] = $this->$validation($index, $param);
                     
                     if(empty($inputValidation[$index])) {
                         break;
@@ -51,6 +50,15 @@ class Validate
                 }
 
             }
+
         }
+
+        Csrf::validateToken();
+
+        if(in_array(null, $inputValidation, true)) {
+            return null;
+        }
+
+        return $inputValidation[$index];
     }
 }

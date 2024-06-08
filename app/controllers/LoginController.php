@@ -10,6 +10,7 @@ use app\support\Csrf;
 use app\support\Redirect;
 use app\support\Request;
 use app\support\Session;
+use app\support\Validate;
 
 class LoginController 
 {
@@ -35,31 +36,41 @@ class LoginController
 
     public function store() 
     {
-        try {
-            Transaction::open();
-            Csrf::validateToken();
-            $data = Request::all();
-            array_shift($data);
-
-            $user = new User;
-            $user = $user->where('email', $data['email']);
-            
-
-            if(!$user) {
-                Session::flash('error', 'Usuário ou senha incorreta!');
+        $validate = new Validate;
+        $validated = $validate->validate([
+            'email' => 'required',
+            'password' => 'required'
+        ]);
+        
+        if($validated) {
+            try {
+                Transaction::open();
+                $data = Request::all();
+                array_shift($data);
+    
+                $user = new User;
+                $user = $user->where('email', $data['email']);
+                
+    
+                if(!$user) {
+                    Session::flash('error', 'Usuário ou senha incorreta!');
+                }
+    
+                if(password_verify($data['password'], $user->password)) {
+                    Auth::logged($user);
+                }else {
+                    Session::flash('error', 'Usuário ou senha incorreta!');
+                }
+    
+                Redirect::back();
+                
+                Transaction::close();
+            } catch (\Throwable $th) {
+                Transaction::rollback();
             }
-
-            if(password_verify($data['password'], $user->password)) {
-                Auth::logged($user);
-            }else {
-                Session::flash('error', 'Usuário ou senha incorreta!');
-            }
-
+        }else {
+            Session::old('email', Request::input('email'));
             Redirect::back();
-            
-            Transaction::close();
-        } catch (\Throwable $th) {
-            Transaction::rollback();
         }
     }
 

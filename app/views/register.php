@@ -38,26 +38,31 @@
                     <h2 class="form__title">Registre-se Agora</h2>
                     <?= getToken(); ?>
                     <div class="form-group">
-                        <input type="text" name="name" id="name" placeholder="Nome Completo" />
+                        <input type="text" name="name" id="name" placeholder="Nome Completo" value="<?= $instances['session']::oldHas('name') ?>" />
+                        <?= flash('name') ?>
                     </div>
                     <div class="form-group">
-                        <input type="email" name="email" id="email" placeholder="Email" />
+                        <input type="email" name="email" id="email" placeholder="Email" value="<?= $instances['session']::oldHas('email') ?>"  />
+                        <?= flash('email') ?>
                     </div>
                     <div class="form-group">
-                        <input type="text" name="phone" id="phone" placeholder="Telefone" />
+                        <input type="text" name="phone" id="phone" placeholder="Telefone" value="<?= $instances['session']::oldHas('phone') ?>"  />
+                        <?= flash('phone') ?>
                     </div>
                     <div class="form-group">
                         <select name="gender" id="gender">
                             <option value="M">Sexo</option>
-                            <option value="M">Masculino</option>
-                            <option value="F">Femenino</option>
+                            <option <?= $instances['session']::oldHas('gender') === 'M' ?  'selected' : ''?>  value="M">Masculino</option>
+                            <option <?= $instances['session']::oldHas('gender') === 'F' ?  'selected' : ''?> value="F">Femenino</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <input type="text" name="address" id="address" placeholder="Endereço" />
+                        <input type="text" name="address" id="address" placeholder="Endereço" value="<?= $instances['session']::oldHas('address') ?>" />
+                        <?= flash('address') ?>
                     </div>
                     <div class="form-group">
-                        <input type="password" name="password" id="password" placeholder="Senha" />
+                        <input type="password" name="password" id="password" placeholder="Senha" value="<?= $instances['session']::oldHas('password') ?>" />
+                        <?= flash('password') ?>
                     </div>
                     <div class="form--btn">
                         <button class="btn btn-primary" type="submit">Cadastrar</button>

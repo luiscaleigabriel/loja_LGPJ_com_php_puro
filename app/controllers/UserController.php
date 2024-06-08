@@ -10,6 +10,7 @@ use app\support\Csrf;
 use app\support\Redirect;
 use app\support\Request;
 use app\support\Session;
+use app\support\Validate;
 use Exception;
 
 class UserController 
@@ -117,7 +118,65 @@ class UserController
     {
         if(Auth::auth()) {
             try {
-                Csrf::validateToken();         
+                
+                $validate = new Validate;
+                $validated = $validate->validate([
+                    'password1' => 'required',
+                    'passwordN' => 'required|minLen:6',
+                    'passwordC' => 'required|minLen:6'
+                ]);
+                
+                if($validated) {
+                    try {
+                        Transaction::open();
+
+                        $data = [
+                            'password1' => Request::input('password1'),
+                            'passwordN' => password_hash(Request::input('passwordN'), PASSWORD_DEFAULT),
+                            'passwordC' => Request::input('passwordC'),
+                        ];
+
+                        $user = $this->user::where('id', Session::get('user')['id']);
+
+                        if(password_verify($data['password1'], $user->password)) {
+                            
+                            if(password_verify($data['passwordC'], $data['passwordN'])) {
+
+                                $newPass = [
+                                    'password' => $data['passwordN']
+                                ];
+
+                                $updated = $this->user::update('id', Session::get('user')['id'], $newPass);
+
+                                if($updated) {
+                                    Session::delete('__flash');
+                                    Session::flash('success', 'palavra passe alterada com sucesso!');
+                                    Redirect::back();
+                                }else {
+                                    Session::delete('__flash');
+                                    Session::flash('error', 'Erro verifique a sua conexão a internet! Ou tente mais tarde!');
+                                    Redirect::back();
+                                }
+
+                            }else {
+                                Session::delete('__flash');
+                                Session::flash('error', 'A nova senha é diferente da senha confirmada!');
+                                Redirect::back();
+                            }
+
+                        }else {
+                            Session::flash('error', 'A palavra passe actual está incorreta!');
+                            Redirect::back();
+                        }
+
+                        // $this->user::update('password', '', $password);
+                        Transaction::close();
+                    } catch (\Throwable $th) {
+                        Transaction::rollback();
+                    }
+                }else {
+                    Redirect::back();
+                }
             } catch (Exception $e) {
                 Redirect::back();
             }

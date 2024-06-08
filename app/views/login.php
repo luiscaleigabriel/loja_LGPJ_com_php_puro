@@ -42,15 +42,17 @@ use app\support\Csrf;
                     <h2 class="form__title">Bem vindo de volta</h2>
                     <?= getToken() ?>
                     <div class="form-group">
-                        <input type="email" name="email" id="email" placeholder="Email" />
+                        <input type="email" name="email" id="email" placeholder="Email" value="<?= $instances['session']::oldHas('email') ?>" />
+                        <?= flash('email') ?>
                     </div>
                     <div class="form-group">
                         <input type="password" name="password" id="password" placeholder="Senha" />
+                        <?= flash('password') ?>
                     </div>
                     <div class="form--btn">
                         <button class="btn btn-primary" type="submit">Entrar</button>
 
-                        <a href="/register">Esqeceu a senha</a>
+                        <a href="#">Esqeceu a senha</a>
                     </div>
                 </form>
             </div>

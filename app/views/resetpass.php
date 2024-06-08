@@ -41,14 +41,17 @@
                     <div class="form-group">
                         <label for="password1">Senha actual</label>
                         <input type="password" name="password1" id="password1" placeholder="Digite a senha actual" />
+                        <?= flash('password1') ?>
                     </div>
                     <div class="form-group">
                         <label for="passwordN">Nova Senha</label>
                         <input type="password" name="passwordN" id="passwordN" placeholder="Digite a nova senha" />
+                        <?= flash('passwordN') ?>
                     </div>
                     <div class="form-group">
                         <label for="passwordC">Confirme senha</label>
                         <input type="password" name="passwordC" id="passwordC" placeholder="Digite novamente a senha" />
+                        <?= flash('passwordC') ?>
                     </div>
                     <div class="form--btn">
                         <button class="btn btn-primary" type="submit">Salvar</button>

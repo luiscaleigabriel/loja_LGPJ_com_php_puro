@@ -87,6 +87,11 @@ ul {
     background-color: var(--bs-danger);
 }
 
+span.error-f {  
+    color: rgb(172, 8, 8);
+    font-size: .8rem;
+}
+
 .products,
 .categories,
 .aboutServices,
@@ -267,7 +272,8 @@ ul {
     align-items: center;
 }
 
-.nav--dropdown--list__btn {
+.nav--dropdown--list__btn,
+.nav--dropdown--list__btn-home {
     position: relative;
     font-size: 1.2rem;
     border: none;
@@ -303,7 +309,8 @@ ul {
     border-top-color: var(--bs-warning);
 }
 
-.nav--dropdown--list__btn:hover {
+.nav--dropdown--list__btn:hover,
+.nav--dropdown--list__btn-home:hover {
     color: var(--bs-warning);
 }
 
@@ -1431,3 +1438,4 @@ span.priceNow {
         grid-template-columns: 1fr;
     }
 }
+

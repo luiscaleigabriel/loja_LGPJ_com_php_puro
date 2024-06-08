@@ -64,6 +64,11 @@ ul {
     list-style: none;
 }
 
+span.error-f {  
+    color: rgb(172, 8, 8);
+    font-size: .8rem;
+}
+
 .success,
 .error {
     width: 100%;

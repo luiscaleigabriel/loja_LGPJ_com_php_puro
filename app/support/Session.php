@@ -36,7 +36,7 @@ class Session
         session_destroy();
     }
 
-    public static function flash(string $index, string $value) 
+    public static function flash(string $index, mixed $value) 
     {
         $_SESSION['__flash'][$index] = $value;
     }
@@ -53,6 +53,20 @@ class Session
         if(self::flashHas($index)) {
             $value = $_SESSION['__flash'][$index];
             unset($_SESSION['__flash'][$index]);
+            return $value;
+        }
+    }
+
+    public static function old(string $index, mixed $value) 
+    {
+        $_SESSION['__old'][$index] = $value;
+    }
+
+    public static function oldHas(string $index) 
+    {
+        if(isset($_SESSION['__old'][$index])) {
+            $value = $_SESSION['__old'][$index];
+            unset($_SESSION['__old'][$index]);
             return $value;
         }
     }

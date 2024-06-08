@@ -12,11 +12,11 @@ class Request
     public static function input(string $index) 
     {
         if(array_key_exists($index, $_POST)) {
-            return $_POST[$index];
+            return strip_tags($_POST[$index]);
         }
 
         if(array_key_exists($index, $_GET)) {
-            return $_GET[$index];
+            return strip_tags($_GET[$index]);
         }
     }
 }

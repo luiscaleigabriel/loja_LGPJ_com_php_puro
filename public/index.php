@@ -34,6 +34,7 @@ try {
     $route->add('/createsubcategory', 'POST', 'SubcategoryController:store');
 
     $route->add('/contact', 'GET', 'ContactController:index');
+    $route->add('/contact', 'POST', 'ContactController:success');
     
     $route->add('/dashorders', 'GET', 'OrderController:show');
     $route->add('/orders', 'GET', 'OrderController:index');
@@ -56,8 +57,8 @@ try {
 
     $route->add('/dash', 'GET', 'DashboardController:index');
     
-    $route->add('/register', 'GET', 'RegisterController:store');
-    $route->add('/register/create', 'POST', 'RegisterController:create');
+    $route->add('/register', 'GET', 'RegisterController:create');
+    $route->add('/register/create', 'POST', 'RegisterController:store');
     $route->init();
 } catch (Exception $e) {
     dd($e->getMessage().''. $e->getFile() .' na linha '. $e->getLine());
