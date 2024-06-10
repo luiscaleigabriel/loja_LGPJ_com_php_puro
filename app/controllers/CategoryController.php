@@ -10,6 +10,7 @@ use app\support\Csrf;
 use app\support\Redirect;
 use app\support\Request;
 use app\support\Session;
+use app\support\Validate;
 
 class CategoryController 
 {
@@ -38,7 +39,6 @@ class CategoryController
     public function create() 
     {
         try {
-            Transaction::open();
             if(Session::has('logged') && Session::has('admin')) {
                 View::render('dash/category/create');
             }else {
@@ -59,15 +59,26 @@ class CategoryController
 
         try {
             Transaction::open();
-            array_shift($data);
-            $created = Category::create($data);
 
-            if($created) {
-                Session::flash('success', 'Categoria criada com sucesso!');
-                Redirect::to('/category');
+            Transaction::open();
+            $validate = new Validate;
+            $validated = $validate->validate([
+                'name' => 'required'
+            ]);
+
+            if($validated) {
+                array_shift($data);
+                $created = Category::create($data);
+
+                if($created) {
+                    Session::flash('success', 'Categoria criada com sucesso!');
+                    Redirect::to('/category');
+                }else {
+                    Session::flash('error', 'Erro ao criar nova categoria tente novamente!');
+                    Redirect::to('/category');
+                }
             }else {
-                Session::flash('error', 'Erro ao criar nova categoria tente novamente!');
-                Redirect::to('/category');
+                Redirect::back();
             }
             Transaction::close();
         } catch (\Throwable $th) {

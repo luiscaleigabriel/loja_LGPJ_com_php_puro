@@ -17,6 +17,7 @@
         <div class="form-group__div">
             <label for="name">Nome</label>
             <input type="text" name="name" id="name" placeholder="Nome" />
+            <?= flash('name') ?>
         </div>
         <div class="form-group__div">
             <label for="slug">Slug</label>
