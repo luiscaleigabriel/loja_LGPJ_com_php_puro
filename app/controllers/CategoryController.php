@@ -52,37 +52,39 @@ class CategoryController
 
     public function store() 
     {
-        $data = Request::all();
-        Csrf::validateToken();
+        $validate = new Validate;
+        $validated = $validate->validate([
+            'name' => 'required',
+            'slug' => 'required',
+        ]);
 
-        $data['slug'] = mb_strtolower(str_replace(' ', '-', Request::input('name')));
+        if($validated) {
+            try {
+                Transaction::open();
 
-        try {
-            Transaction::open();
-
-            Transaction::open();
-            $validate = new Validate;
-            $validated = $validate->validate([
-                'name' => 'required'
-            ]);
-
-            if($validated) {
-                array_shift($data);
+                $data = [
+                    'name' => Request::input('name'),
+                    'slug' => mb_strtolower(str_replace(' ', '-', Request::input('name')))
+                ];
+                
                 $created = Category::create($data);
-
+    
                 if($created) {
+                    Session::delete('__flash');
                     Session::flash('success', 'Categoria criada com sucesso!');
                     Redirect::to('/category');
                 }else {
                     Session::flash('error', 'Erro ao criar nova categoria tente novamente!');
                     Redirect::to('/category');
-                }
-            }else {
-                Redirect::back();
+                }      
+                Transaction::close();
+            } catch (\Throwable $th) {
+                Transaction::rollback();
             }
-            Transaction::close();
-        } catch (\Throwable $th) {
-            Transaction::rollback();
+            
+        }else {
+            Redirect::back();
         }
+        
     }
 }

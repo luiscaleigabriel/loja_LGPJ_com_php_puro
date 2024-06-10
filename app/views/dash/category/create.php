@@ -22,6 +22,7 @@
         <div class="form-group__div">
             <label for="slug">Slug</label>
             <input type="text" disabled name="slug" id="slug" placeholder="Slug" />
+            <?= flash('slug') ?>
         </div>
     </div>
 
