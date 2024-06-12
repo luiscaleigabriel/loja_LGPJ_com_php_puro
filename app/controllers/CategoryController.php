@@ -54,8 +54,7 @@ class CategoryController
     {
         $validate = new Validate;
         $validated = $validate->validate([
-            'name' => 'required',
-            'slug' => 'required',
+            'name' => 'required'
         ]);
 
         if($validated) {
@@ -86,5 +85,93 @@ class CategoryController
             Redirect::back();
         }
         
+    }
+
+    public function update() 
+    {
+        if(array_key_exists('id', $_GET)) {
+            try {
+                Transaction::open();
+                if(Session::has('logged') && Session::has('admin')) {
+                    $id = strip_tags($_GET['id']);
+
+                    $category = Category::where('id', $id);
+
+                    View::render('dash/category/update', ['category' => $category]);
+                }else {
+                    Redirect::to('/');
+                }
+                Transaction::close();
+            } catch (\Throwable $th) {
+                Transaction::rollback();
+            }
+        }else {
+            Redirect::back();
+        }
+     }
+
+    public function updated() 
+    {
+        $validate = new Validate;
+        $validated = $validate->validate([
+            'name' => 'required'
+        ]);
+
+        if($validated) {
+            try {
+                Transaction::open();
+                $id = Request::input('id');
+                $data = [
+                    'name' => Request::input('name'),
+                    'slug' => mb_strtolower(str_replace(' ', '-', Request::input('name')))
+                ];
+                
+                $updated = Category::update('id', $id, $data);
+    
+                if($updated) {
+                    Session::delete('__flash');
+                    Session::flash('success', 'Dados da atualizados com sucesso!');
+                    Redirect::to('/category');
+                }else {
+                    Session::flash('error', 'Erro ao atualizar dados da categoria. Tente novamente!');
+                    Redirect::to('/category');
+                }      
+                Transaction::close();
+            } catch (\Throwable $th) {
+                Transaction::rollback();
+            }
+            
+        }else {
+            Redirect::back();
+        }
+    }
+
+    public function delete() 
+    {
+        if(array_key_exists('id', $_GET)) {
+            try {
+                Transaction::open();
+                if(Session::has('logged') && Session::has('admin')) {
+                    $id = strip_tags($_GET['id']);
+
+                    $deleted = Category::delete('id', $id);
+
+                    if($deleted) {
+                        Session::flash('success', 'Categoria excluida com sucesso!');
+                        Redirect::back();
+                    }else {
+                        Session::flash('error', 'Ocorreu um erro ao tentar excluir a categoria!');
+                        Redirect::back();
+                    }
+                }else {
+                    Redirect::to('/');
+                }
+                Transaction::close();
+            } catch (\Throwable $th) {
+                Transaction::rollback();
+            }
+        }else {
+            Redirect::back();
+        }
     }
 }

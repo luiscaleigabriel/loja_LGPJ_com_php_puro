@@ -58,6 +58,7 @@ class LoginController
     
                 if(password_verify($data['password'], $user->password)) {
                     Auth::logged($user);
+                    Session::delete('__flash');
                 }else {
                     Session::flash('error', 'Usuário ou senha incorreta!');
                 }

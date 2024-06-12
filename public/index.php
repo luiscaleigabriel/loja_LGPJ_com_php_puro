@@ -27,11 +27,17 @@ try {
 
     $route->add('/category', 'GET', 'CategoryController:index');
     $route->add('/createcategory', 'GET', 'CategoryController:create');
+    $route->add('/updatecategory', 'GET', 'CategoryController:update');
     $route->add('/createcategory', 'POST', 'CategoryController:store');
+    $route->add('/updatecategory', 'POST', 'CategoryController:updated');
+    $route->add('/deletecategory', 'GET', 'CategoryController:delete');
 
     $route->add('/subcategory', 'GET', 'SubcategoryController:index');
     $route->add('/createsubcategory', 'GET', 'SubcategoryController:create');
+    $route->add('/updatesubcategory', 'GET', 'SubcategoryController:update');
+    $route->add('/deletesubcategory', 'GET', 'SubcategoryController:delete');
     $route->add('/createsubcategory', 'POST', 'SubcategoryController:store');
+    $route->add('/updatesubcategory', 'POST', 'SubcategoryController:updated');
 
     $route->add('/contact', 'GET', 'ContactController:index');
     $route->add('/contact', 'POST', 'ContactController:success');
