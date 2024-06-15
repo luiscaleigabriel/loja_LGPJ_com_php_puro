@@ -19,27 +19,32 @@
                 <div class="form-group__div row">
                     <label for="name">Nome</label>
                     <input type="text" name="name" id="name" placeholder="Nome" />
+                    <?= flash('name') ?>
                 </div>
                 <div class="form-group__div row">
                     <label for="description">Descrição</label>
                     <textarea name="description" id="description" cols="30" rows="10"></textarea>
+                    <?= flash('description') ?>
                 </div>
                 <div class="form-group__div row">
                     <label for="price">Preço</label>
                     <input type="text" name="price" id="price" />
+                    <?= flash('price') ?>
                 </div>
                 <div class="form-group__div row">
                     <label for="quantity">Quantidade</label>
                     <input type="number" name="quantity" id="quantity" />
+                    <?= flash('quantity') ?>
                 </div>
             </div>
 
             <div class="form-group foot">
-            <h2 class="form_title">Mídia</h2>
+                <h2 class="form_title">Mídia</h2>
                 <div class="form-group__div row">
                     <label for="file">Imagem</label>
                     <input type="file" name="file" />
                 </div>
+                <?= flash('file') ?>
             </div>
         </div>
         <div class="form-rigth">

@@ -13,6 +13,7 @@ use app\support\Redirect;
 use app\support\Request;
 use app\support\Session;
 use app\support\Upload;
+use app\support\Validate;
 
 class ProductController 
 {
@@ -64,38 +65,54 @@ class ProductController
 
     public function store() 
     {
-        $created = false;
-        try {
-            Transaction::open();
+        $validate = new Validate;
+        $validated = $validate->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'price' => 'required',
+            'quantity' => 'required',
+            'file' => 'required',
+            'name' => 'required',
+            'name' => 'required',
+            'name' => 'required',
+        ]);
 
-            Csrf::validateToken();
-            $image = Upload::uploadFile('file', './assets/images/product/');
-
-            $data = [
-                'name' => Request::input('name'),
-                'slug' => mb_strtolower(str_replace(' ', '-', Request::input('name'))),
-                'description' => Request::input('description'),
-                'price' => Request::input('price'),
-                'quantity' => Request::input('quantity'),
-                'image' => './assets/images/product/'.$image,
-                'status' => true,
-                'idcategory' => Request::input('category'),
-                'idsubcategory' => Request::input('subcategory'),
-            ];
-
-            $created = Product::create($data);
-            Transaction::close();
-        } catch (\Throwable $th) {
-            Transaction::rollback();
-        }
-
-        if($created) {
-            Session::flash('success', 'Produto cadastrado com sucesso!');
-            Redirect::to('/products');
+        if($validated) {
+            try {
+                Transaction::open();
+    
+                Csrf::validateToken();
+                $image = Upload::uploadFile('file', './assets/images/product/');
+    
+                $data = [
+                    'name' => Request::input('name'),
+                    'slug' => mb_strtolower(str_replace(' ', '-', Request::input('name'))),
+                    'description' => Request::input('description'),
+                    'price' => Request::input('price'),
+                    'quantity' => Request::input('quantity'),
+                    'image' => './assets/images/product/'.$image,
+                    'status' => true,
+                    'idcategory' => Request::input('category'),
+                    'idsubcategory' => Request::input('subcategory'),
+                ];
+    
+                $created = Product::create($data);
+                Transaction::close();
+            } catch (\Throwable $th) {
+                Transaction::rollback();
+            }
+    
+            if($created) {
+                Session::flash('success', 'Produto cadastrado com sucesso!');
+                Redirect::to('/products');
+            }else {
+                Session::flash('error', 'Ocorreu um erro ao cadastrar o produto!');
+                Redirect::to('/products');
+            }
         }else {
-            Session::flash('error', 'Ocorreu um erro ao cadastrar o produto!');
-            Redirect::to('/products');
+            Redirect::back();
         }
+        
     }
 
     public function details() 
