@@ -21,7 +21,7 @@ class SubcategoryController
             try {
                 Transaction::open();
                 $pagination = new Pagination;
-                $pagination->setItemsPerPages(10);
+                $pagination->setItemsPerPages(7);
                 $subCategories = SubCategory::all('*', $pagination);
                 View::render('dash/subcategory/subcategory', [
                     'subCategories' => $subCategories,

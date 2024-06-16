@@ -22,8 +22,11 @@ try {
 
     $route->add('/details', 'GET', 'ProductController:details');
     $route->add('/products', 'GET', 'ProductController:index');
+    $route->add('/updateproduct', 'GET', 'ProductController:update');
     $route->add('/createproduct', 'GET', 'ProductController:create');
+    $route->add('/deleteproduct', 'GET', 'ProductController:delete');
     $route->add('/createproduct', 'POST', 'ProductController:store');
+    $route->add('/updateproduct', 'POST', 'ProductController:updated');
 
     $route->add('/category', 'GET', 'CategoryController:index');
     $route->add('/createcategory', 'GET', 'CategoryController:create');
@@ -55,6 +58,7 @@ try {
     $route->add('/user/update', 'POST', 'UserController:update');
 
     $route->add('/resetpassword', 'GET', 'UserController:passwordreset');
+    $route->add('/userdelete', 'GET', 'UserController:delete');
     $route->add('/resetpass', 'POST', 'UserController:reset');
 
     $route->add('/login', 'GET', 'LoginController:index');

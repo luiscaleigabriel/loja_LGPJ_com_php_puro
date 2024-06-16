@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\core\View;
 use app\database\models\User;
+use app\database\Pagination;
 use app\database\Transaction;
 use app\support\Auth;
 use app\support\Csrf;
@@ -43,8 +44,13 @@ class UserController
         if(Session::has('logged') && Session::has('admin')) {
             try {
                 Transaction::open();
-                
-                View::render('dash/user/users');
+                $pagination = new Pagination;
+                $pagination->setItemsPerPages(7);
+                $users = User::all('*', $pagination);
+                View::render('dash/user/users', [
+                    'users' => $users,
+                    'pagination' => $pagination
+                ]);
                 Transaction::close();
             } catch (\Throwable $th) {
                 Transaction::rollback();
@@ -184,5 +190,32 @@ class UserController
             Redirect::to('/');
         }  
 
+    }
+
+    public function delete() 
+    {
+        if(Session::has('logged') && Session::has('admin')) {
+            if(array_key_exists('id', $_GET)) {
+                try {
+                    Transaction::open();
+                    $id = strip_tags($_GET['id']);
+                    $deleted = User::delete('id', $id);
+                    if($deleted) {
+                        Session::flash('success', 'Usuário exclido com sucesso!');
+                        Redirect::back();
+                    }else {
+                        Session::flash('error', 'Erro ao exclir Usuário. Tente novamente!');
+                        Redirect::back();
+                    } 
+                    Transaction::close();
+                } catch (\Throwable $th) {
+                    Transaction::rollback();
+                }
+            }else {
+                Redirect::back();
+            }
+        }else {
+            Redirect::to('/');
+        }
     }
 }

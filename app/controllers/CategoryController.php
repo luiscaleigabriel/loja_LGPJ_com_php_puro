@@ -20,7 +20,7 @@ class CategoryController
             try {
                 Transaction::open();
                 $pagination = new Pagination;
-                $pagination->setItemsPerPages(10);
+                $pagination->setItemsPerPages(7);
                 $categories = Category::all('*', $pagination);
 
                 View::render('dash/category/category', [
