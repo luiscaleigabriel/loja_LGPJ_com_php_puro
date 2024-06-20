@@ -4,7 +4,7 @@ namespace app\database\models;
 
 class Order extends Model 
 {
-    public static string $table = 'order';
+    public static string $table = 'orders';
     public readonly int $id;
     public readonly int $iduser;
     public readonly bool $status;

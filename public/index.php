@@ -59,7 +59,10 @@ try {
 
     $route->add('/resetpassword', 'GET', 'UserController:passwordreset');
     $route->add('/userdelete', 'GET', 'UserController:delete');
+    $route->add('/useredit', 'GET', 'AdminController:edit');
     $route->add('/resetpass', 'POST', 'UserController:reset');
+    $route->add('/user/create', 'POST', 'AdminController:store');
+    $route->add('/userupdate', 'POST', 'AdminController:update');
 
     $route->add('/login', 'GET', 'LoginController:index');
     $route->add('/login', 'POST', 'LoginController:store');

@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\core\View;
 use app\database\models\Order;
+use app\database\models\User;
 use app\database\Pagination;
 use app\database\Transaction;
 use app\support\Redirect;
@@ -35,10 +36,13 @@ class OrderController
                 $pagination = new Pagination;
                 $pagination->setItemsPerPages(7);
                 $orders = Order::all('*', $pagination);
+
+                $users = User::all();
                 
                 View::render('dash/orders', [
                     'orders' => $orders,
-                    'pagination' => $pagination
+                    'pagination' => $pagination,
+                    'users' => $users
                 ]);
                 
                 Transaction::close();

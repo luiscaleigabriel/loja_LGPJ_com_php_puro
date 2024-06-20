@@ -321,6 +321,10 @@ span.error-f {
     background-color: var(--bs-white);
 }
 
+.card:last-child {
+    width: 300px;
+}
+
 .card__value {
     padding: 0 1rem;
     padding-top: 2rem;

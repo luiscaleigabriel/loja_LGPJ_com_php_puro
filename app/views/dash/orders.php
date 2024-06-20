@@ -28,18 +28,24 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Fulano de tal</td>
-                    <td>fulano@gmail.com</td>
-                    <td>999999</td>
-                    <td>
-                        <div class="stautus">
-                            Vendido
-                        </div>
-                    </td>
-                    <td>Kz 200.000,00</td>
-                </tr>
+                <?php foreach($orders as $order): ?>
+                    <tr>
+                        <td><?= $order->id ?></td>
+                        <?php foreach($users as $user): ?>
+                            <?php if($user->id === $order->iduser): ?>
+                                <td><?= $user->name ?></td>
+                                <td><?= $user->email ?></td>
+                                <td><?= $user->phone ?></td>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                        <td>
+                            <div class="stautus">
+                                Vendido
+                            </div>
+                        </td>
+                        <td><?= number_format($order->total, 2, ',', '.') ?></td>
+                    </tr>
+                <?php endforeach; ?>
             </tbody>
     </table>
     <div class="table--button">
