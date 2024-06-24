@@ -17,7 +17,14 @@ class OrderController
         if(Session::has('logged')) {
             try {
                 Transaction::open();
-                View::render('orders');
+                $pagination = new Pagination;
+                $pagination->setItemsPerPages(20);
+                $orders = Order::all('*', $pagination);
+                
+                View::render('orders', [
+                    'orders' => $orders,
+                    'pagination' => $pagination
+                ]);
                 Transaction::close();
             } catch (\Throwable $th) {
                 Transaction::rollback();

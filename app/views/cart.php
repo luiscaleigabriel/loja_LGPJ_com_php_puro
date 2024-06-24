@@ -94,7 +94,7 @@
                     SubTotal <span>Kz <?= number_format($instances['cart']->getTotal(), 2, ',', '.') ?></span>
                 </p>
                 <p>
-                    Entrega <span>Kz <?= number_format($entrega = ($instances['cart']->getTotal() > 0) ? 1000 : 0, 2, ',', '.') ?></span>
+                    Entrega <span>Kz <?= number_format($entrega = ($instances['cart']->getTotal() > 0) ? 2000 : 0, 2, ',', '.') ?></span>
                 </p>
                 <div class="cartsummery--total">
                     <p>

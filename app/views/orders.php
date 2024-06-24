@@ -16,6 +16,19 @@
 </section>
 <!-- end source -->
 
+<?php if($instances['session']::has('__flash')): ?>
+    <?php if($instances['session']::flashHas('success')):  ?>
+        <div class="success">
+            <?= $instances['session']::flashGet('success') ?>
+        </div>
+    <?php endif; ?>
+    <?php if($instances['session']::flashHas('error')): ?>
+        <div class="error">
+            <?= $instances['session']::flashGet('error') ?>
+        </div>
+    <?php endif;  ?>
+<?php endif; ?>
+
 <!-- start settings -->
 <section class="settings">
     <div class="settings--content tabl wrapper">
@@ -33,15 +46,21 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>OR756374</td>
-                            <td>11 Nov 2021</td>
-                            <td> <span class="status">Delivered</span></td>
-                            <td>KZ3000</td>
-                        </tr>
-                        <tr>
+                        <?php foreach($orders as $order):?>
+                            <?php if($order->iduser == $instances['session']::get('user')['id']): ?>
+                                <tr>
+                                    <td>OR<?= $order->id ?></td>
+                                    <td><?= $order->orderdate ?></td>
+                                    <td> <span class="status">Comprado</span></td>
+                                    <td>Kz <?= number_format($order->total, 2, ',', '.') ?></td>
+                                </tr>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
+                <div class="table--button">
+        <?= $pagination->links() ?>
+    </div>
             </div>
         </div>
     </div>

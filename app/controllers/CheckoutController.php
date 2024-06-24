@@ -2,11 +2,15 @@
 
 namespace app\controllers;
 
+use app\core\Cart;
 use app\core\CartInfo;
 use app\core\View;
+use app\database\models\Order;
+use app\database\models\User;
 use app\database\Transaction;
 use app\support\Auth;
 use app\support\Redirect;
+use app\support\Request;
 use app\support\Session;
 use Exception;
 use Stripe\StripeClient;
@@ -15,33 +19,61 @@ class CheckoutController
 {
     public function checkout() 
     {
+        if(!isset($_SESSION['cart']) || $_SESSION['cart']['total'] < 1) {
+            Session::flash('error', 'Adicione items no carrinho!');
+            Redirect::back();
+        }else {
+            if(Auth::auth()) {
+                try {
+                    Transaction::open();
+                    $user = User::where('id', Session::get('user')['id']);
+    
+                    View::render('chekout', ['user' => $user]);
+    
+                    Transaction::close();
+                } catch (Exception $e) {
+                    Session::flash('error', 'Falha ao fazer o pagamento verifique a sua conexão a internet!');
+                    Redirect::back();
+                }
+            }else {
+                Session::flash('error', 'Faça login para fazer o pagamento!');
+                Redirect::to('/login');
+            }
+        }
+        
+        
+    }
+
+    public function pay() {
         if(Auth::auth()) {
             try {
-                $privateKey = 'sk_test_51P2GG1HGQqI4q1t5jeCM4Zov796DIejWzqMAh0ajyu3xUyCD5CFiAP1oT5CBwuhgyquSkdo9Xsjr6Mjo2haTLLWh00mcUUNZHW';
-    
-                $stripe = new StripeClient($privateKey);
-    
-                $items = [
-                    'mode' => 'payment',
-                    'success_url' => 'http://localhost:8000/success',
-                    'cancel_url' => 'http://localhost:8000/cancel',
-                ];
-    
-                foreach (CartInfo::getCart() as $product) {
-                    $items['line_items'][] = [
-                        'price_data' => [
-                            'currency' => 'brl',
-                            'product_data' => [
-                            'name' => $product->getName(),
-                            ],
-                            'unit_amount' => $product->getPrice() * 100,
-                        ],
-                        'quantity' => $product->getQuantity(),
-                    ];
+                Transaction::open();
+                
+                if(!isset($_SESSION['cart']) || $_SESSION['cart']['total'] < 1) {
+                    Session::flash('error', 'Adicione items no carrinho!');
+                    Redirect::back();
+                }else {
+                    if(!empty(Request::input('card'))) {
+                        $data = [
+                            'iduser' => Session::get('user')['id'],
+                            'orderdate' => date('Y-m-d'),
+                            'total' => Session::get('cart')['total']
+                        ];
+        
+                        $payment = Order::create($data);
+        
+                        if($payment) {
+                            Session::delete('cart');
+                            Session::flash('success', 'Compra efetuada com sucesso!');
+                            Redirect::to('/orders');
+                        }
+                    }else {
+                        Session::flash('error', 'Informe o número do cartão de Debito!');
+                        Redirect::back();
+                    }
                 }
-    
-                $checkout_session = $stripe->checkout->sessions->create($items);
-                Redirect::to($checkout_session->url);
+
+                Transaction::close();
             } catch (Exception $e) {
                 Session::flash('error', 'Falha ao fazer o pagamento verifique a sua conexão a internet!');
                 Redirect::back();
@@ -50,22 +82,6 @@ class CheckoutController
             Session::flash('error', 'Faça login para fazer o pagamento!');
             Redirect::to('/login');
         }
-        
     }
 
-    public function success() 
-    {
-        try {
-            Transaction::open();
-            View::render('success');
-            Transaction::close();
-        } catch (\Throwable $th) {
-            Transaction::rollback();
-        }
-    }
-
-    public function cancel() 
-    {
-        return View::render('cancel');
-    }
 }

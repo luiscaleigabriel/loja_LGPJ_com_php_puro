@@ -49,8 +49,7 @@ try {
     $route->add('/orders', 'GET', 'OrderController:index');
 
     $route->add('/checkout', 'GET', 'CheckoutController:checkout');
-    $route->add('/success', 'GET', 'CheckoutController:success');
-    $route->add('/cancel', 'GET', 'CheckoutController:cancel');
+    $route->add('/payment', 'POST', 'CheckoutController:pay');
 
     $route->add('/dashcrateusers', 'GET', 'UserController:create');
     $route->add('/users', 'GET', 'UserController:show');
