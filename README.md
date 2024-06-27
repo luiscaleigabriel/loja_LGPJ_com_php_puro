@@ -1,4 +1,4 @@
-#Loja LGPJ com PHP Puro
+###Loja LGPJ com PHP Puro
 <hr />
 Este projeto é uma loja online desenvolvida em PHP puro, sem a utilização de frameworks.
 #Funcionalidades
@@ -11,7 +11,7 @@ Este projeto é uma loja online desenvolvida em PHP puro, sem a utilização de 
 - MySQL
 #Instalação
 1. Clone o repositório
-- git clone
+- git clone https://github.com/luiscaleigabriel/loja_LGPJ_com_php_puro.git
 2. Crie o banco de dados e importe o arquivo database.sql
 
 3. Configure as credenciais do banco de dados no arquivo config.php
