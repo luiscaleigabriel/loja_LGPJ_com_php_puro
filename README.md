@@ -27,8 +27,8 @@ Para desenvolver este projecto foram usada as seguintes tecnologias:
     <ul>
       <li>git clone https://github.com/luiscaleigabriel/loja_LGPJ_com_php_puro.git</li>
     </ul>
-  <li>Crie o banco de dados e importe o arquivo database.sql</li>
-  <li>Configure as credenciais do banco de dados no arquivo config.php</li>
+  <li>Crie o banco de dados e importe o arquivo lgpj.sql</li>
+  <li>Configure as credenciais do banco de dados no arquivo Connection.php</li>
   <li>Execute o projeto em um servidor local</li>
     <ul>
       <li>php -S localhost:8000</li>
