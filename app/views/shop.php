@@ -26,7 +26,7 @@
                             <button class="droplist__btn"><?= $category->name ?></button>
                             <ul class="droplist--list">
                                 <?php foreach($instances['subCategories']::all() as $subCategory): ?>
-                                    <?php if($subCategory->idcategory === $category->id): ?>
+                                    <?php if($subCategory->idcategory == $category->id): ?>
                                         <li class="droplist--list__item">
                                             <a href="/shop?subcategory=<?= $subCategory->id ?>"><?= $subCategory->name ?></a>
                                         </li>

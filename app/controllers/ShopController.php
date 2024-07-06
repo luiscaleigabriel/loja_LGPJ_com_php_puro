@@ -20,7 +20,7 @@ class ShopController
                 $productsBD = Product::all();
                 $products = [];
                 foreach($productsBD as $product) {
-                    if($product->id == $id) {
+                    if($product->idcategory == $id) {
                         $products[] = $product;
                     }
                 }
@@ -40,7 +40,7 @@ class ShopController
                 $productsBD = Product::all();
                 $products = [];
                 foreach($productsBD as $product) {
-                    if($product->id == $id) {
+                    if($product->idsubcategory == $id) {
                         $products[] = $product;
                     }
                 }

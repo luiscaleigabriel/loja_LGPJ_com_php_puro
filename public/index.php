@@ -1,7 +1,6 @@
 <?php
 
 use app\core\Router;
-use app\support\Session;
 
 require '../vendor/autoload.php';
 
